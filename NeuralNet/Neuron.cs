@@ -10,10 +10,13 @@ namespace NeuralNet
 {
     public class Neuron
     {
-        public double Input;
-        public double Output;
+        public double Input {get; set;}
+        public double Output {get; set;}
+
+        public Dictionary<Neuron, double> Weights { get; set; }
+
         private IWeightInitializer WeightInitializer;
-        public Dictionary<Neuron, double> Weights;
+
         private Layer Layer;
 
         /// <summary>

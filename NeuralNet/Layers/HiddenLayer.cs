@@ -26,5 +26,13 @@ namespace NeuralNet.Layers
                 n.InitializeWeights(PreviousLayer);
             }
         }
+
+        public override void CalculateOutputs()
+        {
+            foreach (Neuron n in Neurons)
+            {
+                n.CalculateOutput(PreviousLayer);
+            }
+        }
     }
 }

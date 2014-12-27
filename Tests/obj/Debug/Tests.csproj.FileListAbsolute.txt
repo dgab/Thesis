@@ -3,3 +3,5 @@ D:\Thesis\Tests\bin\Debug\Tests.pdb
 D:\Thesis\Tests\obj\Debug\Tests.csprojResolveAssemblyReference.cache
 D:\Thesis\Tests\obj\Debug\Tests.dll
 D:\Thesis\Tests\obj\Debug\Tests.pdb
+d:\Thesis\Tests\bin\Debug\NeuralNet.dll
+d:\Thesis\Tests\bin\Debug\NeuralNet.pdb

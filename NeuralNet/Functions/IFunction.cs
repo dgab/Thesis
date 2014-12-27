@@ -12,7 +12,7 @@ namespace NeuralNet.Functions
         /// As a result this void should set the output value of n.
         /// </summary>
         /// <param name="n"></param>
-        double ApplyFunction(double d);
+        double ApplyFunction(double x);
 
 
     }

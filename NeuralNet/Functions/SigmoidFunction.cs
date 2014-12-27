@@ -14,9 +14,22 @@ namespace NeuralNet.Functions
         /// f(x) = 1.0 / (1.0 + Exp(-x))
         /// </summary>
 
-        public double ApplyFunction(double d)
+        public double ApplyFunction(double x)
         {
-            return 1 / 1 + (Math.Exp(d));
+            //return 2 / (1 + Math.Exp(-2 * x)) - 1;
+            return 1 / (1 + Math.Exp(-x));
         }
+
+        /*public double Sigmoid(double x)
+        {
+            return 2 / (1 + Math.Exp(-2 * x)) - 1;
+        }
+
+        public double Derivative(double x)
+        {
+            double s = Sigmoid(x);
+            return 1 - (Math.Pow(s, 2));
+        }*/
+
     }
 }

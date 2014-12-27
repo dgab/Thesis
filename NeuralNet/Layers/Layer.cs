@@ -18,11 +18,11 @@ namespace NeuralNet.Layers
             this.Function = new SigmoidFunction();
         }
 
-        public virtual void CalculateOutputs(Layer previousLayer)
+        public virtual void CalculateOutputs()
         {
             foreach (Neuron n in Neurons)
             {
-                n.CalculateOutput(previousLayer);
+                n.CalculateOutput();
             }
         }
     }
