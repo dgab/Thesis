@@ -1,44 +1,49 @@
-﻿using System;
+﻿using NeuralNet.Others;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NeuralNet.Layers;
 
-namespace Thesis.NeuralNet
+namespace NeuralNet
 {
     public class Neuron
     {
-        /// <summary>
-        /// Gets or sets the Input.
-        /// </summary>
-        /// <value>The Input.</value>
-        public double Input
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// Gets or sets the Output.
-        /// </summary>
-        /// <value>The Output.</value>
-        public double Output
-        {
-            get;
-            set;
-        }
+        public double Input;
+        public double Output;
+        private IWeightInitializer WeightInitializer;
+        public Dictionary<Neuron, double> Weights;
+        private Layer Layer;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:Neuron"/> class.
         /// </summary>
-        public Neuron(double input)
+        public Neuron(Layer layer)
         {
-            this.Input = input;
+            this.Layer = layer;
+            Weights = new Dictionary<Neuron, double>();
+            WeightInitializer = new RandomInitializer();
+        }
+
+        public void CalculateOutput(Layer previousLayer)
+        {
+            foreach (Neuron n in previousLayer.Neurons)
+            {
+                this.Input += n.Output * Weights[n];
+            }
+
+            this.CalculateOutput();
         }
 
         public void CalculateOutput()
         {
+            this.Output = this.Layer.Function.ApplyFunction(this.Input);
+        }
 
+        public void InitializeWeights(Layer previousLayer)
+        {
+            Weights = WeightInitializer.Initialize(previousLayer, this);
         }
     }
 }

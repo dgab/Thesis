@@ -1,0 +1,4 @@
+d:\Thesis\NeuralNet\bin\Debug\NeuralNet.dll
+d:\Thesis\NeuralNet\bin\Debug\NeuralNet.pdb
+d:\Thesis\NeuralNet\obj\Debug\NeuralNet.dll
+d:\Thesis\NeuralNet\obj\Debug\NeuralNet.pdb

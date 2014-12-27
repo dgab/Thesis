@@ -39,15 +39,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\RandomExtensions.cs" />
     <Compile Include="Functions\IFunction.cs" />
     <Compile Include="Functions\SigmoidFunction.cs" />
     <Compile Include="Layers\HiddenLayer.cs" />
     <Compile Include="Layers\ILayer.cs" />
     <Compile Include="Layers\InputLayer.cs" />
-    <Compile Include="Layers\LayerCollection.cs" />
+    <Compile Include="Layers\Layer.cs" />
     <Compile Include="Layers\OutputLayer.cs" />
     <Compile Include="NeuralNetwork.cs" />
     <Compile Include="Neuron.cs" />
+    <Compile Include="Others\IWeightInitializer.cs" />
+    <Compile Include="Others\RandomInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

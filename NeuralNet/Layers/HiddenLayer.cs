@@ -1,22 +1,30 @@
-﻿using System;
+﻿using NeuralNet.Others;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Thesis.NeuralNet.Layers
+namespace NeuralNet.Layers
 {
-    public class HiddenLayer : ILayer
+    public class HiddenLayer : Layer, ILayer
     {
-        public ILayer PreviousLayer { get; set; }
-
-        public List<Neuron> Neurons { get; set; }
+        public Layer PreviousLayer { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="T:HiddenLayer"/> class.
         /// </summary>
-        public HiddenLayer(ILayer previousLayer)
+        public HiddenLayer(Layer previousLayer)
+            :base()
         {
             this.PreviousLayer = previousLayer;
+        }
+
+        public void InitializeWeights()
+        {
+            foreach (Neuron n in this.Neurons)
+            {
+                n.InitializeWeights(PreviousLayer);
+            }
         }
     }
 }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Thesis.NeuralNet.Layers;
+using NeuralNet.Layers;
 
-namespace Thesis.NeuralNet
+namespace NeuralNet
 {
     public class NeuralNetwork
     {
@@ -17,7 +17,7 @@ namespace Thesis.NeuralNet
         /// </summary>
         public NeuralNetwork(InputLayer input, List<HiddenLayer> hidden, OutputLayer output)
         {
-            ValidateArguments(input, hidden, output);
+            //ValidateArguments(input, hidden, output);
 
             this.InputLayer = input;
             this.HiddenLayers = hidden;
@@ -33,7 +33,7 @@ namespace Thesis.NeuralNet
 
         }
 
-        private void ValidateArguments(InputLayer input, List<HiddenLayer> hidden, OutputLayer output)
+        /*private void ValidateArguments(InputLayer input, List<HiddenLayer> hidden, OutputLayer output)
         {
             if (input.Neurons.Count == 0)
             {
@@ -54,6 +54,6 @@ namespace Thesis.NeuralNet
             {
                 throw new ArgumentException("There are no neurons defined in the OutputLayer");
             }
-        }
+        }*/
     }
 }

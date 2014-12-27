@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Thesis.NeuralNet.Functions
+namespace NeuralNet.Functions
 {
     public interface IFunction
     {

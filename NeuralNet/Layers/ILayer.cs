@@ -1,13 +1,16 @@
-﻿using System;
+﻿using NeuralNet.Others;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Thesis.NeuralNet.Layers
+namespace NeuralNet.Layers
 {
     public interface ILayer
     {
-        List<Neuron> Neurons { get; set; }
+        Layer PreviousLayer { get; set; }
+
+        void InitializeWeights();
     }
 }
