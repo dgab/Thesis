@@ -6,47 +6,41 @@ using System.Text;
 using System.Threading.Tasks;
 using NeuralNet.Layers;
 
-namespace NeuralNet
+namespace NeuralNet.Neurons
 {
-    public class Neuron
+    public class Neuron : BaseNeuron
     {
         public double Input {get; set;}
-        public double Output {get; set;}
 
-        public Dictionary<Neuron, double> Weights { get; set; }
+        public Dictionary<BaseNeuron, double> Weights { get; set; }
 
         private IWeightInitializer WeightInitializer;
 
-        private Layer Layer;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="T:Neuron"/> class.
-        /// </summary>
         public Neuron(Layer layer)
+            :base(layer)
         {
-            this.Layer = layer;
-            Weights = new Dictionary<Neuron, double>();
+            Weights = new Dictionary<BaseNeuron, double>();
             WeightInitializer = new RandomInitializer();
         }
 
         public void CalculateOutput(Layer previousLayer)
         {
-            foreach (Neuron n in previousLayer.Neurons)
+            foreach (BaseNeuron n in previousLayer.Neurons)
             {
                 this.Input += n.Output * Weights[n];
             }
 
-            this.CalculateOutput();
+            this.Output = this.Layer.Function.ApplyFunction(this.Input);
         }
 
         public void CalculateOutput()
         {
-            this.Output = this.Layer.Function.ApplyFunction(this.Input);
+            this.Output = this.Input;
         }
 
         public void InitializeWeights(Layer previousLayer)
         {
-            Weights = WeightInitializer.Initialize(previousLayer, this);
+            Weights = WeightInitializer.Initialize(previousLayer);
         }
     }
 }

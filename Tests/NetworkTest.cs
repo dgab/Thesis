@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NeuralNet.Layers;
 using NeuralNet;
 using System.Collections.Generic;
+using NeuralNet.Neurons;
 
 namespace Tests
 {

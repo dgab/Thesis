@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using NeuralNet;
 using NeuralNet.Layers;
 using NeuralNet.Extensions;
+using NeuralNet.Neurons;
 
 namespace NeuralNet.Others
 {
@@ -21,11 +22,11 @@ namespace NeuralNet.Others
             Max = 2;
             random = new Random();
         }
-        public Dictionary<Neuron, double> Initialize(Layer previousLayer, Neuron n)
+        public Dictionary<BaseNeuron, double> Initialize(Layer previousLayer)
         {
-            Dictionary<Neuron, double> weights = new Dictionary<Neuron, double>();
+            Dictionary<BaseNeuron, double> weights = new Dictionary<BaseNeuron, double>();
 
-            foreach (Neuron neuron in previousLayer.Neurons)
+            foreach (BaseNeuron neuron in previousLayer.Neurons)
             {
                 weights.Add(neuron, random.NextDouble(Min, Max));
             }

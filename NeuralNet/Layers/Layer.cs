@@ -1,4 +1,6 @@
 ﻿using NeuralNet.Functions;
+using NeuralNet.Neurons;
+using NeuralNet.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,19 +12,30 @@ namespace NeuralNet.Layers
     public abstract class Layer
     {
         public IFunction Function { get; set; }
-        public List<Neuron> Neurons { get; set; }
+        public List<BaseNeuron> Neurons { get; set; }
+
+        public Layer(bool withBias)
+        {
+            this.Neurons = new List<BaseNeuron>();
+            this.Function = new SigmoidFunction();
+
+            if (withBias)
+            {
+                Neurons.Add(new BiasNeuron(this));
+            }
+        }
 
         public Layer()
+            :this(true)
         {
-            this.Neurons = new List<Neuron>();
-            this.Function = new SigmoidFunction();
+
         }
 
         public virtual void CalculateOutputs()
         {
-            foreach (Neuron n in Neurons)
+            foreach (BaseNeuron n in Neurons.OfType<Neuron>())
             {
-                n.CalculateOutput();
+                n.As<Neuron>().CalculateOutput();
             }
         }
     }

@@ -1,4 +1,6 @@
-﻿using NeuralNet.Others;
+﻿using NeuralNet.Neurons;
+using NeuralNet.Others;
+using NeuralNet.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,28 +13,31 @@ namespace NeuralNet.Layers
     {
         public Layer PreviousLayer { get; set; }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="T:OutputLayer"/> class.
-        /// </summary>
-        public OutputLayer(Layer previousLayer)
-            :base()
+        public OutputLayer(Layer previousLayer, bool withBias)
+            :base(withBias)
         {
             this.PreviousLayer = previousLayer;
         }
 
+        public OutputLayer(Layer previousLayer)
+            :this(previousLayer, true)
+        {
+
+        }
+
         public void InitializeWeights()
         {
-            foreach (Neuron n in this.Neurons)
+            foreach (BaseNeuron n in this.Neurons.OfType<Neuron>())
             {
-                n.InitializeWeights(PreviousLayer);
+                n.As<Neuron>().InitializeWeights(PreviousLayer);
             }
         }
 
         public override void CalculateOutputs()
         {
-            foreach (Neuron n in Neurons)
+            foreach (BaseNeuron n in Neurons.OfType<Neuron>())
             {
-                n.CalculateOutput(PreviousLayer);
+                n.As<Neuron>().CalculateOutput(PreviousLayer);
             }
         }
     }

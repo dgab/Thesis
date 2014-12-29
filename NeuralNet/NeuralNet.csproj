@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Extensions\RandomExtensions.cs" />
     <Compile Include="Functions\IFunction.cs" />
     <Compile Include="Functions\SigmoidFunction.cs" />
@@ -48,7 +49,9 @@
     <Compile Include="Layers\Layer.cs" />
     <Compile Include="Layers\OutputLayer.cs" />
     <Compile Include="NeuralNetwork.cs" />
-    <Compile Include="Neuron.cs" />
+    <Compile Include="Neurons\BaseNeuron.cs" />
+    <Compile Include="Neurons\BiasNeuron.cs" />
+    <Compile Include="Neurons\Neuron.cs" />
     <Compile Include="Others\IWeightInitializer.cs" />
     <Compile Include="Others\RandomInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
