@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Extensions\RandomExtensions.cs" />
+    <Compile Include="Functions\FunctionFactory.cs" />
     <Compile Include="Functions\IFunction.cs" />
     <Compile Include="Functions\SigmoidFunction.cs" />
     <Compile Include="Layers\HiddenLayer.cs" />

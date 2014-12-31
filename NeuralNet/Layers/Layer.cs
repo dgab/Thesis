@@ -11,13 +11,28 @@ namespace NeuralNet.Layers
 {
     public abstract class Layer
     {
-        public IFunction Function { get; set; }
+        public TransferFunctions TransferFunction 
+        { 
+            get;
+            set
+            {
+                TransferFunction = value;
+                Function = FunctionFactory.GetFunction(TransferFunction);
+            }
+        }
+
+        public IFunction Function
+        {
+            get;
+            set;
+        }
+
         public List<BaseNeuron> Neurons { get; set; }
 
         public Layer(bool withBias)
         {
             this.Neurons = new List<BaseNeuron>();
-            this.Function = new SigmoidFunction();
+            this.TransferFunction = TransferFunctions.Sigmoid;
 
             if (withBias)
             {
