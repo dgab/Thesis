@@ -11,13 +11,20 @@ namespace NeuralNet.Layers
 {
     public abstract class Layer
     {
+        private TransferFunctions transferFunction;
         public TransferFunctions TransferFunction 
         { 
-            get;
+            get
+            {
+                return transferFunction;
+            }
             set
             {
-                TransferFunction = value;
-                Function = FunctionFactory.GetFunction(TransferFunction);
+                if (transferFunction != value)
+                {
+                    transferFunction = value;
+                    Function = FunctionFactory.GetFunction(TransferFunction);
+                }
             }
         }
 
@@ -52,6 +59,25 @@ namespace NeuralNet.Layers
             {
                 n.As<Neuron>().CalculateOutput();
             }
+        }
+
+        public virtual void AddNeuron()
+        {
+            Neuron n = new Neuron(this);
+            this.Neurons.Add(n);
+        }
+
+        public virtual void AddNeurons(int amount)
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                AddNeuron();
+            }
+        }
+
+        public virtual void RemoveNeuron(Neuron n)
+        {
+            this.Neurons.Remove(n);
         }
     }
 }
