@@ -1,55 +1,75 @@
-﻿using NeuralNet.Layers;
+﻿using NeuralNet.Functions;
+using NeuralNet.Layers;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace NeuralNet
 {
     public class NeuralNetwork
     {
-        private InputLayer InputLayer;
-        private List<HiddenLayer> HiddenLayers;
-        private OutputLayer OutputLayer;
-        /// <summary>
-        /// Initializes a new instance of the <see cref="T:NeuralNetwork"/> class.
-        /// </summary>
-        public NeuralNetwork(InputLayer input, List<HiddenLayer> hidden, OutputLayer output)
-        {
-            //ValidateArguments(input, hidden, output);
+        public InputLayer InputLayer { get; set; }
 
-            this.InputLayer = input;
-            this.HiddenLayers = hidden;
-            this.OutputLayer = output;
+        public List<HiddenLayer> HiddenLayers { get; set; }
+
+        public OutputLayer OutputLayer { get; set; }
+
+        public NeuralNetwork(int[] layerSize, TransferFunctions[] functionType)
+        {
+            InitializeLayers(layerSize, functionType);
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="T:NeuralNetwork"/> class.
-        /// </summary>
-        public NeuralNetwork(InputLayer input, HiddenLayer hidden, OutputLayer output)
-            : this(input, new List<HiddenLayer>() { hidden }, output)
+        private void InitializeLayers(int[] layerSize, TransferFunctions[] functionType)
         {
-
-        }
-
-        /*private void ValidateArguments(InputLayer input, List<HiddenLayer> hidden, OutputLayer output)
-        {
-            if (input.Neurons.Count == 0)
+            if (layerSize.Length <= 1)
             {
-                throw new ArgumentException("There are no neurons defined in the InputLayer");
+                throw new ArgumentException("There were less than 2 LayerSize in the layerSize array.");
             }
-            if (hidden.Count == 0)
+
+            if (layerSize.Length != functionType.Length)
             {
-                throw new ArgumentException("No hidden layer was supplied!");
+                throw new ArgumentException("The length of the layerSize array must match the length of the functionType array.");
             }
-            foreach (HiddenLayer hlay in hidden)
+
+            this.InputLayer = new InputLayer(layerSize.First());
+
+            if (layerSize.Length == 2)
             {
-                if (hlay.Neurons.Count == 0)
+                this.OutputLayer = new OutputLayer(this.InputLayer, layerSize[1]);
+            }
+            else if (layerSize.Length == 3)
+            {
+                this.HiddenLayers = new List<HiddenLayer>();
+                HiddenLayer h = new HiddenLayer(this.InputLayer, layerSize[1]);
+                this.HiddenLayers.Add(h);
+
+                this.OutputLayer = new OutputLayer(this.HiddenLayers.First(), layerSize.Last());
+            }
+            else
+            {
+                this.HiddenLayers = new List<HiddenLayer>();
+                HiddenLayer h = new HiddenLayer(this.InputLayer, layerSize[1]);
+                this.HiddenLayers.Add(h);
+
+                for (int i = 2; i < layerSize.Length - 1; i++)
                 {
-                    throw new ArgumentException(string.Format("There are no neurons defined in the {0}. HiddenLayer", hidden.IndexOf(hlay) + 1));
+                    HiddenLayer hl = new HiddenLayer(this.HiddenLayers[i - 2], layerSize[i]);
+                    this.HiddenLayers.Add(hl);
                 }
+
+                this.OutputLayer = new OutputLayer(this.HiddenLayers.Last(), layerSize.Last());
             }
-            if (output.Neurons.Count == 0)
+
+            this.InputLayer.TransferFunction = functionType.First();
+            this.OutputLayer.TransferFunction = functionType.Last();
+
+            List<TransferFunctions> functions = functionType.ToList();
+            functions.RemoveAt(0);
+            functions.RemoveAt(functions.Count - 1);
+            for (int i = 0; i < this.HiddenLayers.Count; i++)
             {
-                throw new ArgumentException("There are no neurons defined in the OutputLayer");
+                this.HiddenLayers[i].TransferFunction = functionType[i];
             }
-        }*/
+        }
     }
 }

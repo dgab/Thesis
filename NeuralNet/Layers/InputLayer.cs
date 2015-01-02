@@ -10,5 +10,17 @@ namespace NeuralNet.Layers
             : base()
         {
         }
+
+        public InputLayer(bool withBias)
+            : base(withBias)
+        {
+
+        }
+
+        public InputLayer(int neurons)
+            : base(neurons)
+        {
+
+        }
     }
 }

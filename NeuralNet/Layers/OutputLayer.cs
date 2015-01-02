@@ -19,6 +19,11 @@ namespace NeuralNet.Layers
         {
 
         }
+        public OutputLayer(Layer previousLayer, int neurons)
+            : base(neurons)
+        {
+            this.PreviousLayer = previousLayer;
+        }
 
         public void InitializeWeights()
         {

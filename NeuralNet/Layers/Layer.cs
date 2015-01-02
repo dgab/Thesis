@@ -1,6 +1,7 @@
 ﻿using NeuralNet.Extensions;
 using NeuralNet.Functions;
 using NeuralNet.Neurons;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -25,7 +26,7 @@ namespace NeuralNet.Layers
         public IFunction Function
         {
             get;
-            set;
+            private set;
         }
 
         public List<BaseNeuron> Neurons { get; set; }
@@ -47,6 +48,16 @@ namespace NeuralNet.Layers
 
         }
 
+        public Layer(int neurons)
+            : this(true)
+        {
+            if (neurons <= 0)
+            {
+                throw new ArgumentException("The amounts of neuron to be added to the layer must exceed 0.");
+            }
+
+            this.AddNeurons(neurons);
+        }
         public virtual void CalculateOutputs()
         {
             foreach (BaseNeuron n in Neurons.OfType<Neuron>())

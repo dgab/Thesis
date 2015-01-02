@@ -1,4 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NeuralNet;
+using NeuralNet.Functions;
 using NeuralNet.Layers;
 using NeuralNet.Neurons;
 using System.Collections.Generic;
@@ -42,6 +44,15 @@ namespace Tests
             outputLayer.InitializeWeights();
             outputLayer.CalculateOutputs();
 
+        }
+        [TestMethod]
+        public void NetworkTest2()
+        {
+            int[] layerSize = new int[] {3,4,2};
+            TransferFunctions[] functions = new TransferFunctions[] { TransferFunctions.Sigmoid,
+                                                                      TransferFunctions.Sigmoid,
+                                                                      TransferFunctions.Sigmoid};
+            NeuralNetwork nn = new NeuralNetwork(layerSize, functions);
         }
     }
 }
