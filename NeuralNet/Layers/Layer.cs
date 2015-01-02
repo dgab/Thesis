@@ -1,30 +1,24 @@
-﻿using NeuralNet.Functions;
+﻿using NeuralNet.Extensions;
+using NeuralNet.Functions;
 using NeuralNet.Neurons;
-using NeuralNet.Extensions;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NeuralNet.Layers
 {
     public abstract class Layer
     {
         private TransferFunctions transferFunction;
-        public TransferFunctions TransferFunction 
-        { 
+        public TransferFunctions TransferFunction
+        {
             get
             {
                 return transferFunction;
             }
             set
             {
-                if (transferFunction != value)
-                {
-                    transferFunction = value;
-                    Function = FunctionFactory.GetFunction(TransferFunction);
-                }
+                transferFunction = value;
+                Function = FunctionFactory.GetFunction(transferFunction);
             }
         }
 
@@ -48,7 +42,7 @@ namespace NeuralNet.Layers
         }
 
         public Layer()
-            :this(true)
+            : this(true)
         {
 
         }

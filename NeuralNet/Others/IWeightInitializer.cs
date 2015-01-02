@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NeuralNet;
-using NeuralNet.Layers;
+﻿using NeuralNet.Layers;
 using NeuralNet.Neurons;
+using System.Collections.Generic;
 
 namespace NeuralNet.Others
 {

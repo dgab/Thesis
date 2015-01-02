@@ -1,11 +1,6 @@
-﻿using NeuralNet.Neurons;
-using NeuralNet.Others;
-using NeuralNet.Extensions;
-using System;
-using System.Collections.Generic;
+﻿using NeuralNet.Extensions;
+using NeuralNet.Neurons;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NeuralNet.Layers
 {
@@ -14,13 +9,13 @@ namespace NeuralNet.Layers
         public Layer PreviousLayer { get; set; }
 
         public OutputLayer(Layer previousLayer, bool withBias)
-            :base(withBias)
+            : base(withBias)
         {
             this.PreviousLayer = previousLayer;
         }
 
         public OutputLayer(Layer previousLayer)
-            :this(previousLayer, true)
+            : this(previousLayer, true)
         {
 
         }

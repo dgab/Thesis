@@ -1,9 +1,5 @@
-﻿using System;
+﻿using NeuralNet.Layers;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NeuralNet.Layers;
 
 namespace NeuralNet
 {
@@ -28,7 +24,7 @@ namespace NeuralNet
         /// Initializes a new instance of the <see cref="T:NeuralNetwork"/> class.
         /// </summary>
         public NeuralNetwork(InputLayer input, HiddenLayer hidden, OutputLayer output)
-            : this(input, new List<HiddenLayer>() {hidden}, output)
+            : this(input, new List<HiddenLayer>() { hidden }, output)
         {
 
         }

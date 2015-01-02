@@ -1,23 +1,19 @@
-﻿using NeuralNet.Others;
-using System;
+﻿using NeuralNet.Layers;
+using NeuralNet.Others;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NeuralNet.Layers;
 
 namespace NeuralNet.Neurons
 {
     public class Neuron : BaseNeuron
     {
-        public double Input {get; set;}
+        public double Input { get; set; }
 
         public Dictionary<BaseNeuron, double> Weights { get; set; }
 
         private IWeightInitializer WeightInitializer;
 
         public Neuron(Layer layer)
-            :base(layer)
+            : base(layer)
         {
             Weights = new Dictionary<BaseNeuron, double>();
             WeightInitializer = new RandomInitializer();

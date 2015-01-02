@@ -1,9 +1,7 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NeuralNet.Layers;
-using NeuralNet;
-using System.Collections.Generic;
 using NeuralNet.Neurons;
+using System.Collections.Generic;
 
 namespace Tests
 {
@@ -43,6 +41,7 @@ namespace Tests
 
             outputLayer.InitializeWeights();
             outputLayer.CalculateOutputs();
+
         }
     }
 }
