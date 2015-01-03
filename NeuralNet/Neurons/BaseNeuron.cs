@@ -6,11 +6,15 @@ namespace NeuralNet.Neurons
     {
         public double Output { get; protected set; }
 
+        public double Delta { get; set; }
+
         protected readonly Layer Layer;
 
+        public double Gradient { get; set; }
         public BaseNeuron(Layer layer)
         {
             this.Layer = layer;
         }
+
     }
 }

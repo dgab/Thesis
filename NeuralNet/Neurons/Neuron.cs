@@ -1,6 +1,7 @@
 ﻿using NeuralNet.Layers;
 using NeuralNet.Others;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace NeuralNet.Neurons
 {
@@ -38,5 +39,15 @@ namespace NeuralNet.Neurons
         {
             Weights = WeightInitializer.Initialize(previousLayer);
         }
+
+        public void CalculateDelta(double eta)
+        {
+            foreach (BaseNeuron key in Weights.Keys.ToList())
+            {
+                Weights[key] += eta * this.Gradient * key.Output;
+            }
+        }
+
+
     }
 }

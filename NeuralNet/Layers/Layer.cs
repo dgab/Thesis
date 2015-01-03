@@ -30,6 +30,13 @@ namespace NeuralNet.Layers
         }
 
         public List<BaseNeuron> Neurons { get; set; }
+        public List<Neuron> SimpleNeurons
+        {
+            get
+            {
+                return Neurons.OfType<Neuron>().ToList();
+            }
+        }
 
         public Layer(bool withBias)
         {

@@ -9,6 +9,6 @@ namespace NeuralNet.Functions
         /// <param name="n"></param>
         double ApplyFunction(double x);
 
-
+        double Derivative(double x);
     }
 }

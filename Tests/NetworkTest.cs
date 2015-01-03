@@ -53,6 +53,8 @@ namespace Tests
                                                                       TransferFunctions.Sigmoid,
                                                                       TransferFunctions.Sigmoid};
             NeuralNetwork nn = new NeuralNetwork(layerSize, functions);
+
+            nn.Train(new List<double>() { 0.1, 0.2,0.3 }, new List<double>() { 0.85, -0.75 });
         }
     }
 }

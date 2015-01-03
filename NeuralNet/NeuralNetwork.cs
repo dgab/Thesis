@@ -1,11 +1,15 @@
 ﻿using NeuralNet.Functions;
 using NeuralNet.Layers;
+using NeuralNet.Neurons;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace NeuralNet
 {
+    /// <summary>
+    /// Todo: do I really need to know which layer is hidden and which layer is output?
+    /// </summary>
     public class NeuralNetwork
     {
         public InputLayer InputLayer { get; set; }
@@ -14,9 +18,19 @@ namespace NeuralNet
 
         public OutputLayer OutputLayer { get; set; }
 
+        public double Eta { get; set; }
+
+        public List<ILayer> ProcessingLayers
+        {
+            get
+            {
+                return new List<ILayer>(HiddenLayers) {OutputLayer};
+            }
+        }
         public NeuralNetwork(int[] layerSize, TransferFunctions[] functionType)
         {
             InitializeLayers(layerSize, functionType);
+            this.Eta = 0.9;
         }
 
         private void InitializeLayers(int[] layerSize, TransferFunctions[] functionType)
@@ -71,5 +85,60 @@ namespace NeuralNet
                 this.HiddenLayers[i].TransferFunction = functionType[i];
             }
         }
+
+        public void Train(List<double> input, List<double> targets)
+        {
+            ForwardPass(input);
+            BackPropagate(targets);
+            UpdateWeights();
+        }
+
+        private void ForwardPass(List<double> input)
+        {
+            if (this.InputLayer.SimpleNeurons.Count() != input.Count)
+            {
+                throw new ArgumentException("Invalid amount of input values.");
+            }
+
+            for (int i = 0; i < input.Count; i++)
+            {
+                this.InputLayer.SimpleNeurons[i].Input = input[i];
+            }
+
+            this.InputLayer.CalculateOutputs();
+
+            foreach (HiddenLayer layer in HiddenLayers)
+            {
+                layer.InitializeWeights();
+                layer.CalculateOutputs();
+            }
+
+            this.OutputLayer.InitializeWeights();
+            this.OutputLayer.CalculateOutputs();
+        }
+
+        private void BackPropagate(List<double> targets)
+        {
+
+            this.OutputLayer.CalculateGradients(targets);
+            Layer nextLayer = this.OutputLayer;
+
+            for (int i = HiddenLayers.Count - 1; i >= 0; i--)
+            {
+                HiddenLayers[i].CalculateGradients(nextLayer);
+                nextLayer = HiddenLayers[i];
+            }
+        }
+
+        private void CalculateDeltas()
+        {
+            this.ProcessingLayers.ForEach(x=>x.CalculateDeltas(this.Eta));
+        }
+
+        private void UpdateWeights()
+        {
+            this.ProcessingLayers.ForEach(x => x.CalculateDeltas(this.Eta));
+        }
+
     }
 }

@@ -6,5 +6,7 @@ namespace NeuralNet.Layers
         Layer PreviousLayer { get; set; }
 
         void InitializeWeights();
+
+        void CalculateDeltas(double eta);
     }
 }

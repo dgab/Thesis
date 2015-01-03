@@ -40,5 +40,25 @@ namespace NeuralNet.Layers
                 n.As<Neuron>().CalculateOutput(PreviousLayer);
             }
         }
+
+        public void CalculateGradients(Layer nextLayer)
+        {
+            foreach (BaseNeuron n in this.Neurons)
+            {
+                double sumGradient = 0;
+
+                foreach (Neuron nl in nextLayer.SimpleNeurons)
+                {
+                    sumGradient += nl.Weights[n] * nl.Gradient;
+                }
+
+                n.Gradient = this.Function.Derivative(n.Output) * sumGradient;
+            }
+        }
+
+        public void CalculateDeltas(double eta)
+        {
+            this.SimpleNeurons.ForEach(x => x.CalculateDelta(eta));
+        }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using NeuralNet.Extensions;
 using NeuralNet.Neurons;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace NeuralNet.Layers
@@ -39,6 +41,24 @@ namespace NeuralNet.Layers
             {
                 n.As<Neuron>().CalculateOutput(PreviousLayer);
             }
+        }
+
+        public void CalculateGradients(List<double> targets)
+        {
+            if (this.SimpleNeurons.Count != targets.Count)
+            {
+                throw new ArgumentException("Invalid amount of target values.");
+            }
+
+            foreach (Neuron n in this.SimpleNeurons)
+            {
+                n.Gradient = this.Function.Derivative(n.Output) * (targets[SimpleNeurons.IndexOf(n)] - n.Output);
+            }
+        }
+
+        public void CalculateDeltas(double eta)
+        {
+            this.SimpleNeurons.ForEach(x => x.CalculateDelta(eta));
         }
     }
 }
