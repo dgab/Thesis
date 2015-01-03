@@ -1,0 +1,8 @@
+D:\Thesis\ConsoleNeuralNets\bin\Debug\ConsoleNeuralNets.exe.config
+D:\Thesis\ConsoleNeuralNets\bin\Debug\ConsoleNeuralNets.exe
+D:\Thesis\ConsoleNeuralNets\bin\Debug\ConsoleNeuralNets.pdb
+D:\Thesis\ConsoleNeuralNets\bin\Debug\NeuralNet.dll
+D:\Thesis\ConsoleNeuralNets\bin\Debug\NeuralNet.pdb
+D:\Thesis\ConsoleNeuralNets\obj\Debug\ConsoleNeuralNets.csprojResolveAssemblyReference.cache
+D:\Thesis\ConsoleNeuralNets\obj\Debug\ConsoleNeuralNets.exe
+D:\Thesis\ConsoleNeuralNets\obj\Debug\ConsoleNeuralNets.pdb
