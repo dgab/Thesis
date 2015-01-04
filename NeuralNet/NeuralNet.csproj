@@ -50,7 +50,6 @@
     <Compile Include="Layers\InputLayer.cs" />
     <Compile Include="Layers\Layer.cs" />
     <Compile Include="Layers\OutputLayer.cs" />
-    <Compile Include="Layers\TargetLayer.cs" />
     <Compile Include="NetworkVariables.cs" />
     <Compile Include="Neurons\BiasNeuron.cs" />
     <Compile Include="Neurons\Neuron.cs" />

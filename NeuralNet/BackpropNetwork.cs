@@ -47,13 +47,6 @@ namespace NeuralNet
             }
         }
 
-        public TargetLayer TargetLayer
-        {
-            get
-            {
-                return (TargetLayer)Layers.Last();
-            }
-        }
 
         /// <summary>
         /// Only for serialization.
@@ -90,11 +83,6 @@ namespace NeuralNet
                 ol.AddNeurons(sizes.Last());
 
                 Layers.Add(ol);
-
-                TargetLayer tl = new TargetLayer(Layers.Last());
-                tl.AddNeurons(sizes.Last());
-
-                Layers.Add(tl);
             }
 
         }
@@ -103,7 +91,7 @@ namespace NeuralNet
         {
             //TODO: validate ts by the network
             InputLayer.ApplyTrainingSet(ts);
-            TargetLayer.ApplyTrainingSet(ts);
+            
             foreach (Layer l in this.Layers)
 	        {
 		        l.InitializeWeights();

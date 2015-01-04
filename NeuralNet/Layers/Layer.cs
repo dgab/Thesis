@@ -9,8 +9,7 @@ namespace NeuralNet.Layers
     [XmlRoot("Layer")]
     [XmlInclude(typeof(InputLayer)),
     XmlInclude(typeof(HiddenLayer)),
-    XmlInclude(typeof(OutputLayer)),
-    XmlInclude(typeof(TargetLayer))]
+    XmlInclude(typeof(OutputLayer))]
     public abstract class Layer
     {
 

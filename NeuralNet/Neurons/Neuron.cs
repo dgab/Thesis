@@ -60,15 +60,7 @@ namespace NeuralNet.Neurons
         #endregion
 
         #region Backprop
-        private bool CanCalculateGradient()
-        {
-            return !(this.Layer is InputLayer || this.Layer.PreviousLayer is InputLayer);
-        }
 
-        public void CalculateGradient()
-        {
-
-        }
         #endregion
     }
 }
