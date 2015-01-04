@@ -2,32 +2,38 @@
 using NeuralNet.Layers;
 using NeuralNet.Neurons;
 using System;
-using System.Collections.Generic;
 
 namespace NeuralNet.Others
 {
     public class RandomInitializer : IWeightInitializer
     {
         public double Min { get; set; }
+
         public double Max { get; set; }
 
-        private readonly Random random;
         public RandomInitializer()
         {
-            Min = -2;
-            Max = 2;
-            random = new Random();
+            this.Min = -2;
+            this.Max = 2;
         }
-        public Dictionary<BaseNeuron, double> Initialize(Layer previousLayer)
+
+        public RandomInitializer(double min, double max)
         {
-            Dictionary<BaseNeuron, double> weights = new Dictionary<BaseNeuron, double>();
+            this.Min = min;
+            this.Max = max;
+        }
 
-            foreach (BaseNeuron neuron in previousLayer.Neurons)
+        public void InitializeWeights(ref Neuron neuron)
+        {
+            Layer previousLayer = neuron.Layer.PreviousLayer;
+
+            foreach (Neuron previousNeuron in previousLayer.Neurons)
             {
-                weights.Add(neuron, random.NextDouble(Min, Max));
+                Synapse s = new Synapse(previousNeuron, neuron);
+                s.Weight = RandomExtensions.GetRandom.NextDouble(this.Min, this.Max);
+                s.Index = previousLayer.Neurons.IndexOf(previousNeuron);
+                neuron.Weights.Add(s);
             }
-
-            return weights;
         }
     }
 }

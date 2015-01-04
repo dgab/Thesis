@@ -1,26 +1,27 @@
-﻿
+﻿using NeuralNet.Functions;
+using NeuralNet.Neurons;
+using System.Collections.Generic;
+using System.Xml.Serialization;
+using System.Linq;
+
 namespace NeuralNet.Layers
 {
+    [XmlRoot("InputLayer")]
     public class InputLayer : Layer
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="T:InputLayer"/> class.
-        /// </summary>
         public InputLayer()
-            : base()
+            :base()
         {
+            this.TransferFunction = TransferFunctions.Identity;
         }
 
-        public InputLayer(bool withBias)
-            : base(withBias)
+        public void ApplyTrainingSet(TrainingSet ts)
         {
-
-        }
-
-        public InputLayer(int neurons)
-            : base(neurons)
-        {
-
+            //first is biasneuron....always
+            for (int i = 0; i < this.Neurons.Count - 1; i++)
+            {
+                this.Neurons[i + 1].Input = ts.Inputs[i];
+            }
         }
     }
 }

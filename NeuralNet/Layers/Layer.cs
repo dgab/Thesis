@@ -1,15 +1,22 @@
-﻿using NeuralNet.Extensions;
-using NeuralNet.Functions;
+﻿using NeuralNet.Functions;
 using NeuralNet.Neurons;
-using System;
+using NeuralNet.Others;
 using System.Collections.Generic;
-using System.Linq;
+using System.Xml.Serialization;
 
 namespace NeuralNet.Layers
 {
+    [XmlRoot("Layer")]
+    [XmlInclude(typeof(InputLayer)),
+    XmlInclude(typeof(HiddenLayer)),
+    XmlInclude(typeof(OutputLayer)),
+    XmlInclude(typeof(TargetLayer))]
     public abstract class Layer
     {
+
         private TransferFunctions transferFunction;
+
+        [XmlAttribute("function")]
         public TransferFunctions TransferFunction
         {
             get
@@ -18,68 +25,58 @@ namespace NeuralNet.Layers
             }
             set
             {
-                transferFunction = value;
-                Function = FunctionFactory.GetFunction(transferFunction);
+                this.transferFunction = value;
+                this.Function = FunctionFactory.GetFunction(this.TransferFunction);
             }
         }
 
-        public IFunction Function
-        {
-            get;
-            private set;
-        }
+        [XmlIgnore()]
+        public IFunction Function { get; set; }
 
-        public List<BaseNeuron> Neurons { get; set; }
-        public List<Neuron> SimpleNeurons
-        {
-            get
-            {
-                return Neurons.OfType<Neuron>().ToList();
-            }
-        }
+        [XmlArray("Neurons")]
+        [XmlArrayItem("Neuron")]
+        public List<Neuron> Neurons { get; set; }
 
-        public Layer(bool withBias)
-        {
-            this.Neurons = new List<BaseNeuron>();
-            this.TransferFunction = TransferFunctions.Sigmoid;
+        [XmlIgnore()]
+        public Layer PreviousLayer { get; set; }
 
-            if (withBias)
-            {
-                Neurons.Add(new BiasNeuron(this));
-            }
-        }
-
+        public readonly IWeightInitializer WeightInitializer = new RandomInitializer();
         public Layer()
-            : this(true)
         {
-
+            this.TransferFunction = TransferFunctions.Sigmoid;
+            this.Neurons = new List<Neuron>();
+            this.AddBiasNeuron();
         }
 
-        public Layer(int neurons)
-            : this(true)
+        public Layer(IWeightInitializer weightInitializer)
+            : this()
         {
-            if (neurons <= 0)
+            if (weightInitializer != null)
             {
-                throw new ArgumentException("The amounts of neuron to be added to the layer must exceed 0.");
-            }
-
-            this.AddNeurons(neurons);
-        }
-        public virtual void CalculateOutputs()
-        {
-            foreach (BaseNeuron n in Neurons.OfType<Neuron>())
-            {
-                n.As<Neuron>().CalculateOutput();
+                this.WeightInitializer = weightInitializer;
             }
         }
+        #region NeuronList modifying methods.
 
-        public virtual void AddNeuron()
+        public void AddNeuron()
         {
-            Neuron n = new Neuron(this);
-            this.Neurons.Add(n);
+            this.Neurons.Add(new Neuron(this));
         }
 
-        public virtual void AddNeurons(int amount)
+        protected virtual bool CanAddBiasNeuron()
+        {
+            return true;
+        }
+
+        protected void AddBiasNeuron()
+        {
+            if (CanAddBiasNeuron())
+            {
+                this.Neurons.Add(new BiasNeuron(this));  
+            }
+        }
+
+        public void AddNeurons(int amount)
         {
             for (int i = 0; i < amount; i++)
             {
@@ -87,9 +84,45 @@ namespace NeuralNet.Layers
             }
         }
 
-        public virtual void RemoveNeuron(Neuron n)
+        public void RemoveNeuron(Neuron n)
         {
             this.Neurons.Remove(n);
         }
+        #endregion
+
+        #region FeedForward
+        protected virtual bool CanInitializeWeights()
+        {
+            return !(this.GetType() == typeof(InputLayer));
+        }
+
+        public void InitializeWeights()
+        {
+            if (CanInitializeWeights())
+            {
+                for (int i = 0; i < this.Neurons.Count; i++)
+                {
+                    Neuron n = this.Neurons[i];
+                    if (!(n is BiasNeuron))
+                    {
+                        WeightInitializer.InitializeWeights(ref n);
+                    }
+                }
+            }
+        }
+
+
+        public virtual void CalculateOutputs()
+        {
+            foreach (Neuron n in this.Neurons)
+            {
+                n.CalculateOutput();
+            }
+        }
+        #endregion
+
+        #region Backprop
+        
+        #endregion
     }
 }

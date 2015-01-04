@@ -1,53 +1,74 @@
 ﻿using NeuralNet.Layers;
-using NeuralNet.Others;
+using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Xml.Serialization;
 
 namespace NeuralNet.Neurons
 {
-    public class Neuron : BaseNeuron
+    [XmlRoot("Neuron")]
+    [XmlInclude(typeof(BiasNeuron))]
+    public class Neuron
     {
+        [XmlAttribute("input")]
         public double Input { get; set; }
 
-        public Dictionary<BaseNeuron, double> Weights { get; set; }
+        [XmlAttribute("output")]
+        public double Output { get; set; }
 
-        private IWeightInitializer WeightInitializer;
+        [XmlArray("Weights")]
+        [XmlArrayItem("Weight")]
+        public List<Synapse> Weights { get; set; }
 
-        public Neuron(Layer layer)
-            : base(layer)
+        [XmlElement("Gradient")]
+        public double Gradient { get; set; }
+
+        [XmlIgnore()]
+        public Layer Layer { get; set; }
+
+        /// <summary>
+        /// Should only be used during serialization.
+        /// </summary>
+        public Neuron()
         {
-            Weights = new Dictionary<BaseNeuron, double>();
-            WeightInitializer = new RandomInitializer();
+            this.Weights = new List<Synapse>();
         }
 
-        public void CalculateOutput(Layer previousLayer)
+        public Neuron(Layer layer)
+            :this()
         {
-            foreach (BaseNeuron n in previousLayer.Neurons)
-            {
-                this.Input += n.Output * Weights[n];
-            }
+            this.Layer = layer;
+        }
 
-            this.Output = this.Layer.Function.ApplyFunction(this.Input);
+        #region FeedForward
+        protected virtual bool CanCalculateOutput()
+        {
+            return true;
         }
 
         public void CalculateOutput()
         {
-            this.Output = this.Input;
-        }
-
-        public void InitializeWeights(Layer previousLayer)
-        {
-            Weights = WeightInitializer.Initialize(previousLayer);
-        }
-
-        public void CalculateDelta(double eta)
-        {
-            foreach (BaseNeuron key in Weights.Keys.ToList())
+            if (CanCalculateOutput())
             {
-                Weights[key] += eta * this.Gradient * key.Output;
+                foreach (Synapse w in this.Weights)
+                {
+                    this.Input += w.Input.Output * w.Weight;
+                }
+                this.Output = this.Layer.Function.ApplyFunction(this.Input);
             }
         }
 
+        #endregion
 
+        #region Backprop
+        private bool CanCalculateGradient()
+        {
+            return !(this.Layer is InputLayer || this.Layer.PreviousLayer is InputLayer);
+        }
+
+        public void CalculateGradient()
+        {
+
+        }
+        #endregion
     }
 }

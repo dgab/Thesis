@@ -1,64 +1,33 @@
-﻿using NeuralNet.Extensions;
-using NeuralNet.Neurons;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using NeuralNet.Others;
 
 namespace NeuralNet.Layers
 {
-    public class OutputLayer : Layer, ILayer
+    public class OutputLayer : Layer
     {
-        public Layer PreviousLayer { get; set; }
+        /// <summary>
+        /// Used for serialization
+        /// </summary>
+        public OutputLayer()
+            :base()
+        {
 
-        public OutputLayer(Layer previousLayer, bool withBias)
-            : base(withBias)
+        }
+
+        public OutputLayer(Layer previousLayer, IWeightInitializer weightInitializer)
+            :base(weightInitializer)
         {
             this.PreviousLayer = previousLayer;
         }
 
         public OutputLayer(Layer previousLayer)
-            : this(previousLayer, true)
+            :this(previousLayer, null)
         {
 
         }
-        public OutputLayer(Layer previousLayer, int neurons)
-            : base(neurons)
-        {
-            this.PreviousLayer = previousLayer;
-        }
 
-        public void InitializeWeights()
+        protected override bool CanAddBiasNeuron()
         {
-            foreach (BaseNeuron n in this.Neurons.OfType<Neuron>())
-            {
-                n.As<Neuron>().InitializeWeights(PreviousLayer);
-            }
-        }
-
-        public override void CalculateOutputs()
-        {
-            foreach (BaseNeuron n in Neurons.OfType<Neuron>())
-            {
-                n.As<Neuron>().CalculateOutput(PreviousLayer);
-            }
-        }
-
-        public void CalculateGradients(List<double> targets)
-        {
-            if (this.SimpleNeurons.Count != targets.Count)
-            {
-                throw new ArgumentException("Invalid amount of target values.");
-            }
-
-            foreach (Neuron n in this.SimpleNeurons)
-            {
-                n.Gradient = this.Function.Derivative(n.Output) * (targets[SimpleNeurons.IndexOf(n)] - n.Output);
-            }
-        }
-
-        public void CalculateDeltas(double eta)
-        {
-            this.SimpleNeurons.ForEach(x => x.CalculateDelta(eta));
+            return false;
         }
     }
 }

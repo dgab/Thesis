@@ -1,13 +1,28 @@
 ﻿using NeuralNet.Layers;
+using System.Xml.Serialization;
 
 namespace NeuralNet.Neurons
 {
-    public class BiasNeuron : BaseNeuron
+    [XmlRoot("BiasNeuron")]
+    public class BiasNeuron : Neuron
     {
-        public BiasNeuron(Layer layer)
-            : base(layer)
+        /// <summary>
+        /// Necessary for serialization.
+        /// </summary>
+        public BiasNeuron()
         {
-            this.Output = 1;
+
+        }
+
+        public BiasNeuron(Layer layer)
+            :base(layer)
+        {
+            this.Input = this.Output = 1;
+        }
+
+        protected override bool CanCalculateOutput()
+        {
+            return false;
         }
     }
 }
