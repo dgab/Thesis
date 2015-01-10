@@ -71,7 +71,7 @@ namespace NeuralNet.Layers
         {
             if (CanAddBiasNeuron())
             {
-                this.Neurons.Add(new BiasNeuron(this));  
+                this.Neurons.Add(new BiasNeuron(this));
             }
         }
 
@@ -121,7 +121,20 @@ namespace NeuralNet.Layers
         #endregion
 
         #region Backprop
-        
+
+        public void UpdateWeights()
+        {
+            if (!(this is InputLayer))
+            {
+                foreach (Neuron n in this.Neurons)
+                {
+                    foreach (Synapse s in n.Weights)
+                    {
+                        s.Update();
+                    }
+                }
+            }
+        }
         #endregion
     }
 }

@@ -47,6 +47,21 @@ namespace NeuralNet
             }
         }
 
+        public OutputLayer OutputLayer
+        {
+            get
+            {
+                return (OutputLayer)Layers.Last();
+            }
+        }
+
+        public List<HiddenLayer> HiddenLayers
+        {
+            get
+            {
+                return Layers.OfType<HiddenLayer>().ToList();
+            }
+        }
 
         /// <summary>
         /// Only for serialization.
@@ -87,17 +102,56 @@ namespace NeuralNet
 
         }
 
+        public void InitializeWeights()
+        {
+            foreach (Layer l in this.Layers)
+            {
+                l.InitializeWeights();
+            }
+        }
+
         public double Train(TrainingSet ts)
         {
             //TODO: validate ts by the network
-            InputLayer.ApplyTrainingSet(ts);
+            this.InputLayer.ApplyTrainingSet(ts);
             
             foreach (Layer l in this.Layers)
 	        {
-		        l.InitializeWeights();
+		        //l.InitializeWeights();
                 l.CalculateOutputs();
 	        }
-            return 1;
+
+            this.OutputLayer.ApplyTrainingSet(ts);
+
+            this.OutputLayer.CalculateGradients();
+
+            Layer nextlayer = this.OutputLayer;
+
+            for (int i = HiddenLayers.Count - 1; i <= 0; i++)
+            {
+                HiddenLayers[i].CalculateGradients(nextlayer);
+                nextlayer = HiddenLayers[i];
+            }
+
+            foreach (Layer l in this.Layers)
+            {
+                l.UpdateWeights();
+            }
+
+            return this.OutputLayer.CalculateError();
+        }
+
+        public double Process(double input)
+        {
+            this.InputLayer.Neurons[0].Input = input;
+
+            foreach (Layer l in this.Layers)
+            {
+                //l.InitializeWeights();
+                l.CalculateOutputs();
+            }
+
+            return this.OutputLayer.Neurons[0].Output;
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using NeuralNet.Neurons;
-using System;
+﻿using System;
 using System.Xml.Serialization;
 
 namespace NeuralNet.Neurons
@@ -20,10 +19,17 @@ namespace NeuralNet.Neurons
         [XmlElement("Weight")]
         public double Weight { get; set; }
 
+        [XmlElement("Delta")]
+        public double Delta { get; set; }
+
+        [XmlElement("PreviousDelta")]
+        public double PreviousDelta { get; set; }
+
         public Synapse(Neuron input, Neuron output)
         {
             this.Input = input;
             this.Output = output;
+            this.PreviousDelta = 0;
         }
 
         /// <summary>
@@ -31,7 +37,14 @@ namespace NeuralNet.Neurons
         /// </summary>
         public Synapse()
         {
+        }
 
+        public void Update()
+        {
+            this.Delta = NetworkVariables.Eta * this.Output.Gradient * this.Input.Input;
+            this.Weight += this.Delta;
+            this.Weight += this.PreviousDelta * NetworkVariables.Momentum;
+            this.PreviousDelta = this.Delta;
         }
     }
 }
