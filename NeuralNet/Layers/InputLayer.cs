@@ -26,5 +26,9 @@ namespace NeuralNet.Layers
             return false;
         }
 
+        public override void CalculateOutputs()
+        {
+            //Do nothing at all....
+        }
     }
 }

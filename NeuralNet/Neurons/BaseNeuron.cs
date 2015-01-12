@@ -41,6 +41,13 @@ namespace NeuralNet.Neurons
         [XmlElement("Output")]
         public double Output { get; set; }
 
+        /*public bool ResetInput
+        {
+            get
+            {
+                return this.CurrentLayer.GetType() != typeof(InputLayer);
+            }
+        }*/
         public virtual bool CanInitWeight()
         {
             return true;
@@ -52,6 +59,8 @@ namespace NeuralNet.Neurons
         }
         protected virtual void OutputCalculation()
         {
+            //this.Input = this.ResetInput ? 0 : this.Input;
+            this.Input = 0;
             foreach (Synapse s in this.SynapsesIn)
             {
                 this.Input += s.InputNeuron.Output * s.Weight;

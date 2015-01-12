@@ -28,6 +28,7 @@ namespace NeuralNet.Neurons
 
         public void CalculateHiddenGradient()
         {
+            this.Gradient = 0;
             foreach (Synapse s in this.SynapsesOut)
             {
                 this.Gradient += s.OutputNeuron.Gradient * s.Weight;
