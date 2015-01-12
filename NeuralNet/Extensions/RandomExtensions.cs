@@ -4,7 +4,20 @@ namespace NeuralNet.Extensions
 {
     public static class RandomExtensions
     {
-        public static readonly Random GetRandom = new Random();
+        private static Random defaultRandom;
+
+        public static Random Default
+        {
+            get
+            {
+                if (defaultRandom == null)
+                {
+                    defaultRandom = new Random();
+                }
+                return RandomExtensions.defaultRandom;
+            }
+        }
+
         public static double NextDouble(this Random r, double min, double max)
         {
             return r.NextDouble() * (max - min) + min;

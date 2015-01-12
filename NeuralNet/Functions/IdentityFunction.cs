@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Xml.Serialization;
 
 namespace NeuralNet.Functions
 {
+    [XmlRoot("IdentityFunction")]
     public class IdentityFunction : IFunction
     {
         public double ApplyFunction(double x)

@@ -39,7 +39,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BackpropNetwork.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Extensions\RandomExtensions.cs" />
     <Compile Include="Functions\FunctionFactory.cs" />
@@ -48,18 +47,19 @@
     <Compile Include="Functions\SigmoidFunction.cs" />
     <Compile Include="Layers\HiddenLayer.cs" />
     <Compile Include="Layers\InputLayer.cs" />
-    <Compile Include="Layers\Layer.cs" />
     <Compile Include="Layers\OutputLayer.cs" />
-    <Compile Include="NetworkVariables.cs" />
+    <Compile Include="Layers\Layer.cs" />
+    <Compile Include="Neurons\BaseNeuron.cs" />
     <Compile Include="Neurons\BiasNeuron.cs" />
     <Compile Include="Neurons\Neuron.cs" />
-    <Compile Include="Neurons\Synapse.cs" />
     <Compile Include="Others\IWeightInitializer.cs" />
+    <Compile Include="Others\NetworkVariables.cs" />
     <Compile Include="Others\RandomInitializer.cs" />
-    <Compile Include="Others\TargetWeightInitializer.cs" />
+    <Compile Include="Others\Synapse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Serialization\Serializer.cs" />
-    <Compile Include="TrainingSet.cs" />
+    <Compile Include="Serialization\Serialization.cs" />
+    <Compile Include="Training\TrainingSample.cs" />
+    <Compile Include="Training\TrainingSet.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

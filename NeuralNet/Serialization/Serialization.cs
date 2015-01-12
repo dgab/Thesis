@@ -1,11 +1,10 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
 
 namespace NeuralNet.Serialization
 {
-    public class Serializer
+    public class Serialization
     {
         public static string Serialize<T>(T value)
         {

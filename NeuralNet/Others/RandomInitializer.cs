@@ -1,7 +1,4 @@
-﻿using NeuralNet.Extensions;
-using NeuralNet.Layers;
-using NeuralNet.Neurons;
-using System;
+﻿using NeuralNet.Neurons;
 
 namespace NeuralNet.Others
 {
@@ -23,17 +20,14 @@ namespace NeuralNet.Others
             this.Max = max;
         }
 
-        public void InitializeWeights(ref Neuron neuron)
+        public double InitializeWeight()
         {
-            Layer previousLayer = neuron.Layer.PreviousLayer;
+            return 0;
+        }
 
-            foreach (Neuron previousNeuron in previousLayer.Neurons)
-            {
-                Synapse s = new Synapse(previousNeuron, neuron);
-                s.Weight = RandomExtensions.GetRandom.NextDouble(this.Min, this.Max);
-                s.Index = previousLayer.Neurons.IndexOf(previousNeuron);
-                neuron.Weights.Add(s);
-            }
+        public void InitializeWeights(ref Neuron n)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
