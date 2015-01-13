@@ -39,12 +39,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackPropNetwork.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Extensions\RandomExtensions.cs" />
     <Compile Include="Functions\FunctionFactory.cs" />
     <Compile Include="Functions\IdentityFunction.cs" />
     <Compile Include="Functions\IFunction.cs" />
     <Compile Include="Functions\SigmoidFunction.cs" />
+    <Compile Include="LayerCollection.cs" />
     <Compile Include="Layers\HiddenLayer.cs" />
     <Compile Include="Layers\InputLayer.cs" />
     <Compile Include="Layers\OutputLayer.cs" />

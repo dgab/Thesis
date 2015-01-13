@@ -9,7 +9,7 @@ namespace NeuralNet.Layers
     public class HiddenLayer : Layer
     {
         /// <summary>
-        /// Only for serialization
+        /// Only for serialization, and casting
         /// </summary>
         public HiddenLayer()
             : base()
@@ -29,6 +29,20 @@ namespace NeuralNet.Layers
             {
                 neuron.CalculateHiddenGradient();
             }
+        }
+
+        public static explicit operator HiddenLayer(OutputLayer obj)
+        {
+            HiddenLayer hl = new HiddenLayer()
+            {
+                Neurons = obj.Neurons,
+                PreviousLayer = obj.PreviousLayer,
+                TransferFunction = obj.TransferFunction
+            };
+
+            hl.AddBiasNeuron();
+
+            return hl;
         }
     }
 }

@@ -135,7 +135,7 @@ namespace NeuralNet.Layers
 
         protected void AddBiasNeuron()
         {
-            this.Neurons.Add(new BiasNeuron(this));
+            this.Neurons.Insert(0, new BiasNeuron(this));
         }
 
         #endregion
