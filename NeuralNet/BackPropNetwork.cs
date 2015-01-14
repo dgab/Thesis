@@ -10,6 +10,7 @@ namespace NeuralNet
     {
         public LayerCollection Layers { get; set; }
 
+        public TrainingSet TrainingSet { get; set; }
         public double Eta
         {
             get

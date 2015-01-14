@@ -1,10 +1,9 @@
-﻿using NeuralNet.Layers;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace NeuralNet
+namespace NeuralNet.Layers
 {
     public class LayerCollection : IList<Layer>
     {

@@ -4,9 +4,9 @@ namespace NeuralNet.Training
 {
     public class TrainingSample
     {
-        List<double> Inputs { get; set; }
+        public List<double> Inputs { get; set; }
 
-        List<double> Targets { get; set; }
+        public List<double> Targets { get; set; }
 
         public TrainingSample()
         {
