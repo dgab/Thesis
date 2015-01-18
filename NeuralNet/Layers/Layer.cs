@@ -100,12 +100,6 @@ namespace NeuralNet.Layers
             }
         }
 
-
-        protected virtual bool CanCalculateGradient()
-        {
-            return true;
-        }
-
         public void UpdateWeights()
         {
             foreach (BaseNeuron neuron in this.Neurons)

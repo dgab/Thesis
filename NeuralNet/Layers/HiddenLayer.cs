@@ -1,4 +1,5 @@
-﻿using NeuralNet.Functions;
+﻿using NeuralNet.Extensions;
+using NeuralNet.Functions;
 using NeuralNet.Neurons;
 using System.Linq;
 using System.Xml.Serialization;
@@ -28,6 +29,11 @@ namespace NeuralNet.Layers
             foreach (Neuron neuron in this.Neurons.OfType<Neuron>())
             {
                 neuron.CalculateHiddenGradient();
+            }
+
+            if (!(this.PreviousLayer is InputLayer))
+            {
+                this.PreviousLayer.As<HiddenLayer>().CalculateGradients();
             }
         }
 

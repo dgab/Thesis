@@ -9,7 +9,7 @@ namespace Tests.UnitTests
         [TestMethod]
         public void InitializeTest()
         {
-            BackPropNetwork bpn = new BackPropNetwork();
+            BackpropNetwork bpn = new BackpropNetwork();
             bpn.Initialize(3, 4, 2);
             Assert.AreEqual(1, 1);
         }

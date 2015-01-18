@@ -1,6 +1,7 @@
 ﻿using NeuralNet.Functions;
 using NeuralNet.Neurons;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Serialization;
 
 namespace NeuralNet.Layers
@@ -28,7 +29,20 @@ namespace NeuralNet.Layers
 
         public override void CalculateOutputs()
         {
-            //Do nothing at all....
+            foreach (Neuron n in this.Neurons.OfType<Neuron>())
+            {
+                n.Output = n.Input;
+            }
+        }
+
+        public void AddInputs(List<double> inputs)
+        {
+            int i = 0;
+            foreach (Neuron n in this.Neurons.OfType<Neuron>())
+            {
+                n.Input = inputs[i];
+                i++;
+            }
         }
     }
 }

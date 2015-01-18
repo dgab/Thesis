@@ -1,6 +1,7 @@
 ﻿using NeuralNet.Extensions;
 using NeuralNet.Functions;
 using NeuralNet.Neurons;
+using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
@@ -29,12 +30,22 @@ namespace NeuralNet.Layers
             return false;
         }
 
-        public void CalculateGradients(List<double> targets)
+        public double CalculateGradients(List<double> targets)
         {
+            double error = 0;
             for (int i = 0; i < this.Neurons.Count; i++)
             {
+                error += Math.Pow(targets[i] - this.Neurons[i].Output, 2);
                 this.Neurons[i].As<Neuron>().CalculateOutputGradient(targets[i]);
             }
+
+            if (!(this.PreviousLayer is InputLayer))
+            {
+                this.PreviousLayer.As<HiddenLayer>().CalculateGradients();
+            }
+
+            return error;
         }
+
     }
 }

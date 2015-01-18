@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NeuralNet.Extensions;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,21 @@ namespace NeuralNet.Layers
     {
         private readonly IList<Layer> layers = new List<Layer>();
 
+        public InputLayer InputLayer
+        {
+            get
+            {
+                return layers.First().As<InputLayer>();
+            }
+        }
+
+        public OutputLayer OutputLayer
+        {
+            get
+            {
+                return layers.Last().As<OutputLayer>();
+            }
+        }
         #region IEnumerable
         public IEnumerator<Layer> GetEnumerator()
         {
