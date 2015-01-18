@@ -27,13 +27,13 @@ namespace NeuralNet.Layers
             return false;
         }
 
-        public override void CalculateOutputs()
+       /* public override void CalculateOutputs()
         {
             foreach (Neuron n in this.Neurons.OfType<Neuron>())
             {
                 n.Output = n.Input;
             }
-        }
+        }*/
 
         public void AddInputs(List<double> inputs)
         {

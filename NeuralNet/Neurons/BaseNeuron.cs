@@ -59,8 +59,11 @@ namespace NeuralNet.Neurons
         }
         protected virtual void OutputCalculation()
         {
-            //this.Input = this.ResetInput ? 0 : this.Input;
-            this.Input = 0;
+            if (!(this.CurrentLayer is InputLayer))
+            {
+                this.Input = 0;
+            }
+
             foreach (Synapse s in this.SynapsesIn)
             {
                 this.Input += s.InputNeuron.Output * s.Weight;
