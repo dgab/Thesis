@@ -7,8 +7,18 @@ using System.Linq;
 
 namespace NeuralNet
 {
+    public delegate void TrainingEpochDelegate(object sender, TrainingEpochEventArgs e);
     public class BackpropNetwork
     {
+        public event TrainingEpochDelegate TrainingEpochEvent;
+
+        public void OnTrainingEpoch(object sender, TrainingEpochEventArgs e)
+        {
+            if (this.TrainingEpochEvent != null)
+            {
+                this.TrainingEpochEvent(sender, e);
+            }
+        }
         public LayerCollection Layers { get; set; }
 
         public TrainingSet TrainingSet { get; set; }
@@ -74,6 +84,11 @@ namespace NeuralNet
             this.initialized = true;
         }
 
+        /// <summary>
+        /// Does on training iteration.
+        /// </summary>
+        /// <param name="trainingSet">The targets and inputs.</param>
+        /// <returns></returns>
         public double Train(TrainingSet trainingSet)
         {
             if (this.initialized)
@@ -102,6 +117,19 @@ namespace NeuralNet
             else
             {
                 throw new InvalidOperationException("The network must first be initialized!");
+            }
+        }
+
+        public void Train(TrainingSet ts, int iterations, double errorLevel)
+        {
+            double error = 1;
+            int currentIteration = 0;
+
+            while (error > errorLevel && iterations >= currentIteration)
+            {
+                error = this.Train(ts);
+                currentIteration++;
+                this.OnTrainingEpoch(this, new TrainingEpochEventArgs(error, currentIteration));
             }
         }
 

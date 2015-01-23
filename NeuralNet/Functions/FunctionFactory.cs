@@ -5,7 +5,8 @@ namespace NeuralNet.Functions
     public enum TransferFunctions
     {
         Sigmoid,
-        Identity
+        Identity,
+        Step
     }
     public static class FunctionFactory
     {
@@ -20,6 +21,9 @@ namespace NeuralNet.Functions
                     break;
                 case TransferFunctions.Identity:
                     result = new IdentityFunction();
+                    break;
+                case TransferFunctions.Step:
+                    result = new StepFunction();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException("Not a valid function!");
