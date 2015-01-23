@@ -1,9 +1,7 @@
 ﻿using NeuralNet.Layers;
-using System.Xml.Serialization;
 
 namespace NeuralNet.Neurons
 {
-    [XmlRoot("BiasNeuron")]
     public class BiasNeuron : BaseNeuron
     {
         /// <summary>

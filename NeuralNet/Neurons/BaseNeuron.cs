@@ -1,13 +1,9 @@
 ﻿using NeuralNet.Layers;
 using NeuralNet.Others;
 using System.Collections.Generic;
-using System.Xml.Serialization;
 
 namespace NeuralNet.Neurons
 {
-    [XmlRoot("BaseNeuron")]
-    [XmlInclude(typeof(BiasNeuron)),
-     XmlInclude(typeof(Neuron))]
     public class BaseNeuron
     {
         /// <summary>
@@ -24,21 +20,15 @@ namespace NeuralNet.Neurons
             this.SynapsesIn = new List<Synapse>();
             this.SynapsesOut = new List<Synapse>();
         }
-
-        [XmlIgnore]
         public Layer CurrentLayer { get; set; }
 
         //[XmlArray("InputSynapses"), XmlArrayItem("Synapse")]
-        [XmlIgnore]
         public List<Synapse> SynapsesIn { get; set; }
 
-        [XmlArray("OutputSynapses"), XmlArrayItem("Synapse")]
         public List<Synapse> SynapsesOut { get; set; }
 
-        [XmlElement("Input")]
         public double Input { get; set; }
 
-        [XmlElement("Output")]
         public double Output { get; set; }
 
         /*public bool ResetInput

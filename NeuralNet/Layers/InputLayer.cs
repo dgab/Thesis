@@ -6,7 +6,6 @@ using System.Xml.Serialization;
 
 namespace NeuralNet.Layers
 {
-    [XmlRoot("InputLayer")]
     public class InputLayer : Layer
     {
         public InputLayer()

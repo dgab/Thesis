@@ -7,22 +7,14 @@ using System.Xml.Serialization;
 
 namespace NeuralNet.Layers
 {
-    [XmlRoot("Layer")]
-    [XmlInclude(typeof(InputLayer)),
-     XmlInclude(typeof(HiddenLayer)),
-     XmlInclude(typeof(OutputLayer))]
     public abstract class Layer
     {
-        [XmlArray("Neurons"), XmlArrayItem("Neuron")]
         public List<BaseNeuron> Neurons { get; set; }
 
-        [XmlIgnore]
         public Layer PreviousLayer { get; set; }
 
-        [XmlIgnore]
         private TransferFunctions transferFunction;
 
-        [XmlElement("TransferFunction")]
         public TransferFunctions TransferFunction
         {
             get

@@ -1,8 +1,6 @@
-﻿using System.Xml.Serialization;
-
+﻿
 namespace NeuralNet.Functions
 {
-    [XmlRoot("IdentityFunction")]
     public class IdentityFunction : IFunction
     {
         public double ApplyFunction(double x)

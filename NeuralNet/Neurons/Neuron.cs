@@ -4,7 +4,6 @@ using System.Xml.Serialization;
 
 namespace NeuralNet.Neurons
 {
-    [XmlRoot("Neuron")]
     public class Neuron : BaseNeuron
     {
 
@@ -23,7 +22,6 @@ namespace NeuralNet.Neurons
         }
 
 
-        [XmlElement("Gradient")]
         public double Gradient { get; set; }
 
         public void CalculateHiddenGradient()

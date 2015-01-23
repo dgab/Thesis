@@ -3,11 +3,9 @@ using NeuralNet.Functions;
 using NeuralNet.Neurons;
 using System;
 using System.Collections.Generic;
-using System.Xml.Serialization;
 
 namespace NeuralNet.Layers
 {
-    [XmlRoot("OutputLayer")]
     public class OutputLayer : Layer
     {
         /// <summary>

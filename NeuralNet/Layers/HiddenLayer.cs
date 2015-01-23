@@ -6,7 +6,6 @@ using System.Xml.Serialization;
 
 namespace NeuralNet.Layers
 {
-    [XmlRoot("HiddenLayer")]
     public class HiddenLayer : Layer
     {
         /// <summary>

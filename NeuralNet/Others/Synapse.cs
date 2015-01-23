@@ -4,22 +4,16 @@ using System.Xml.Serialization;
 
 namespace NeuralNet.Others
 {
-    [XmlRoot("Synapse")]
     public class Synapse
     {
-        [XmlIgnore]
         public BaseNeuron InputNeuron { get; set; }
 
-        [XmlIgnore]
         public Neuron OutputNeuron { get; set; }
 
-        [XmlElement("Weight")]
         public double Weight { get; set; }
 
-        [XmlElement("Delta")]
         public double Delta { get; set; }
 
-        [XmlElement("PreviousDelta")]
         public double PreviousDelta { get; set; }
 
         public void Update()
