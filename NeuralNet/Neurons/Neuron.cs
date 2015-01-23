@@ -1,6 +1,5 @@
 ﻿using NeuralNet.Layers;
 using NeuralNet.Others;
-using System.Xml.Serialization;
 
 namespace NeuralNet.Neurons
 {

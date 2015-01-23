@@ -22,7 +22,6 @@ namespace NeuralNet.Neurons
         }
         public Layer CurrentLayer { get; set; }
 
-        //[XmlArray("InputSynapses"), XmlArrayItem("Synapse")]
         public List<Synapse> SynapsesIn { get; set; }
 
         public List<Synapse> SynapsesOut { get; set; }

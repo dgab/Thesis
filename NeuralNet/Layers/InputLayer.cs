@@ -2,7 +2,6 @@
 using NeuralNet.Neurons;
 using System.Collections.Generic;
 using System.Linq;
-using System.Xml.Serialization;
 
 namespace NeuralNet.Layers
 {
@@ -26,13 +25,13 @@ namespace NeuralNet.Layers
             return false;
         }
 
-       /* public override void CalculateOutputs()
-        {
-            foreach (Neuron n in this.Neurons.OfType<Neuron>())
-            {
-                n.Output = n.Input;
-            }
-        }*/
+        /* public override void CalculateOutputs()
+         {
+             foreach (Neuron n in this.Neurons.OfType<Neuron>())
+             {
+                 n.Output = n.Input;
+             }
+         }*/
 
         public void AddInputs(List<double> inputs)
         {

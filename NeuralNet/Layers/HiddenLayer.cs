@@ -2,7 +2,6 @@
 using NeuralNet.Functions;
 using NeuralNet.Neurons;
 using System.Linq;
-using System.Xml.Serialization;
 
 namespace NeuralNet.Layers
 {

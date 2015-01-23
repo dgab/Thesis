@@ -3,7 +3,6 @@ using NeuralNet.Neurons;
 using NeuralNet.Others;
 using System.Collections.Generic;
 using System.Linq;
-using System.Xml.Serialization;
 
 namespace NeuralNet.Layers
 {
@@ -28,7 +27,6 @@ namespace NeuralNet.Layers
             }
         }
 
-        [XmlIgnore()]
         public IFunction Function { get; private set; }
         /// <summary>
         /// Only for serialization
