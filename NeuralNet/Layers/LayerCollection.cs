@@ -12,6 +12,10 @@ namespace NeuralNet.Layers
 
         public InputLayer InputLayer
         {
+            get
+            {
+                return layers.First().As<InputLayer>();
+            }
         }
 
         public OutputLayer OutputLayer

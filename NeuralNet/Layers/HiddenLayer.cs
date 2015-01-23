@@ -7,14 +7,6 @@ namespace NeuralNet.Layers
 {
     public class HiddenLayer : Layer
     {
-        /// <summary>
-        /// Only for serialization, and casting
-        /// </summary>
-        public HiddenLayer()
-            : base()
-        {
-
-        }
 
         public HiddenLayer(Layer previousLayer)
             : base(previousLayer)
@@ -37,10 +29,9 @@ namespace NeuralNet.Layers
 
         public static explicit operator HiddenLayer(OutputLayer obj)
         {
-            HiddenLayer hl = new HiddenLayer()
+            HiddenLayer hl = new HiddenLayer(obj.PreviousLayer)
             {
                 Neurons = obj.Neurons,
-                PreviousLayer = obj.PreviousLayer,
                 TransferFunction = obj.TransferFunction
             };
 

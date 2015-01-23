@@ -6,14 +6,6 @@ namespace NeuralNet.Neurons
 {
     public class BaseNeuron
     {
-        /// <summary>
-        /// Only for serialization
-        /// </summary>
-        public BaseNeuron()
-        {
-
-        }
-
         public BaseNeuron(Layer currentLayer)
         {
             this.CurrentLayer = currentLayer;
@@ -30,13 +22,6 @@ namespace NeuralNet.Neurons
 
         public double Output { get; set; }
 
-        /*public bool ResetInput
-        {
-            get
-            {
-                return this.CurrentLayer.GetType() != typeof(InputLayer);
-            }
-        }*/
         public virtual bool CanInitWeight()
         {
             return true;

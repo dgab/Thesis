@@ -8,15 +8,6 @@ namespace NeuralNet.Layers
 {
     public class OutputLayer : Layer
     {
-        /// <summary>
-        /// Only for serialization
-        /// </summary>
-        public OutputLayer()
-            : base()
-        {
-
-        }
-
         public OutputLayer(Layer previousLayer)
             : base(previousLayer)
         {

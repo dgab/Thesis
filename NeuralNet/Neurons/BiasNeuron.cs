@@ -4,14 +4,6 @@ namespace NeuralNet.Neurons
 {
     public class BiasNeuron : BaseNeuron
     {
-        /// <summary>
-        /// Only for serialization
-        /// </summary>
-        public BiasNeuron()
-        {
-
-        }
-
         public BiasNeuron(Layer currentLayer)
             : base(currentLayer)
         {

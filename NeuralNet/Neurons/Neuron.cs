@@ -5,15 +5,6 @@ namespace NeuralNet.Neurons
 {
     public class Neuron : BaseNeuron
     {
-
-        /// <summary>
-        /// Only for serialization
-        /// </summary>
-        public Neuron()
-        {
-
-        }
-
         public Neuron(Layer currentLayer)
             : base(currentLayer)
         {

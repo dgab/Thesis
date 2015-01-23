@@ -8,7 +8,7 @@ namespace NeuralNet.Layers
 {
     public abstract class Layer
     {
-        public List<BaseNeuron> Neurons { get; set; }
+        public List<BaseNeuron> Neurons { get; protected set; }
 
         public Layer PreviousLayer { get; set; }
 
@@ -28,13 +28,6 @@ namespace NeuralNet.Layers
         }
 
         public IFunction Function { get; private set; }
-        /// <summary>
-        /// Only for serialization
-        /// </summary>
-        public Layer()
-        {
-
-        }
 
         public Layer(Layer previousLayer)
         {
