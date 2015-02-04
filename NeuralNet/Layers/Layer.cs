@@ -8,12 +8,24 @@ namespace NeuralNet.Layers
 {
     public abstract class Layer
     {
+        private TransferFunctions transferFunction;
+
+        public Layer(Layer previousLayer)
+        {
+            this.PreviousLayer = previousLayer;
+            this.Neurons = new List<BaseNeuron>();
+
+            if (CanAddBiasNeuron())
+            {
+                this.AddBiasNeuron();
+            }
+        }
+
+        public IFunction Function { get; private set; }
+
         public List<BaseNeuron> Neurons { get; protected set; }
 
         public Layer PreviousLayer { get; set; }
-
-        private TransferFunctions transferFunction;
-
         public TransferFunctions TransferFunction
         {
             get
@@ -26,17 +38,27 @@ namespace NeuralNet.Layers
                 this.Function = FunctionFactory.GetFunction(value);
             }
         }
-
-        public IFunction Function { get; private set; }
-
-        public Layer(Layer previousLayer)
+        public virtual void CalculateOutputs()
         {
-            this.PreviousLayer = previousLayer;
-            this.Neurons = new List<BaseNeuron>();
-
-            if (CanAddBiasNeuron())
+            foreach (BaseNeuron neuron in this.Neurons)
             {
-                this.AddBiasNeuron();
+                neuron.CalculateOutput();
+            }
+        }
+
+        public void InitializeWeights()
+        {
+            if (CanInitializeWeights())
+            {
+                InitWeights();
+            }
+        }
+
+        public void UpdateWeights()
+        {
+            foreach (BaseNeuron neuron in this.Neurons)
+            {
+                neuron.UpdateWeights();
             }
         }
 
@@ -66,32 +88,8 @@ namespace NeuralNet.Layers
                 }
             }
         }
-
-        public void InitializeWeights()
-        {
-            if (CanInitializeWeights())
-            {
-                InitWeights();
-            }
-        }
-
-        public virtual void CalculateOutputs()
-        {
-            foreach (BaseNeuron neuron in this.Neurons)
-            {
-                neuron.CalculateOutput();
-            }
-        }
-
-        public void UpdateWeights()
-        {
-            foreach (BaseNeuron neuron in this.Neurons)
-            {
-                neuron.UpdateWeights();
-            }
-        }
-
         #region Neuron adding/removing methods
+
         public void AddNeuron()
         {
             this.Neurons.Add(new Neuron(this));
@@ -115,7 +113,6 @@ namespace NeuralNet.Layers
             this.Neurons.Insert(0, new BiasNeuron(this));
         }
 
-        #endregion
-
+        #endregion Neuron adding/removing methods
     }
 }

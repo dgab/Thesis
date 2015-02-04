@@ -11,7 +11,7 @@ namespace ConsoleNeuralNets
     {
         static void Main(string[] args)
         {
-            BackpropNetwork bpn = new BackpropNetwork(0.8, 0.1);
+            BackpropNetwork bpn = new BackpropNetwork(0.0005, 0.01);
             bpn.Initialize(8, 15, 2);
 
             TrainingSet ts = new TrainingSet(bpn.Layers.InputLayer, bpn.Layers.OutputLayer);
@@ -19,7 +19,7 @@ namespace ConsoleNeuralNets
             ts.Add(new TrainingSample(new List<double>() { 1, 1, 1, 1, 1, 1, 1, 1 }, new List<double> { 0.2, 0.3 }));
             ts.Add(new TrainingSample(new List<double>() { 0, 0, 0, 0, 0, 0, 0, 0 }, new List<double> { 0.3, 0.5 }));
             bpn.TrainingEpochEvent += bpn_TrainingEpochEvent;
-            bpn.Train(ts, 10000, 0.0001);
+            bpn.Train(ts, int.MaxValue, 0.0000001);
 
             /*double error = 1;
             do
