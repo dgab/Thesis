@@ -1,5 +1,10 @@
 ExcelAddIn/obj/
+ExcelAddIn/bin/
+NeuralNet/obj/
+NeuralNet/bin/
 ConsoleNeuralNets/obj/
+ConsoleNeuralNets/bin/
 TestResults/
-Tests/obj
-Tests/bin
+Tests/obj/
+Tests/bin/
+*.suo
