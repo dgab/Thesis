@@ -1,6 +1,7 @@
 ﻿
 using NeuralNet.Neurons;
 using System;
+using System.Windows.Media;
 namespace ExcelAddIn.Log
 {
     public class DisplayNeuron : DisplayObject
@@ -42,5 +43,18 @@ namespace ExcelAddIn.Log
         }
 
         public BaseNeuron Neuron { get; set; }
+
+        private Color color = Colors.Blue;
+        public Color Color
+        {
+            get
+            {
+                return color;
+            }
+            set
+            {
+                color = value;
+            }
+        }
     }
 }

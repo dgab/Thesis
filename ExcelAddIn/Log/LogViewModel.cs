@@ -42,5 +42,31 @@ namespace ExcelAddIn
         }
 
         #endregion
+
+        #region Scrolling support
+
+        private double _areaHeight = 500;
+        public double AreaHeight
+        {
+            get { return _areaHeight; }
+            set
+            {
+                _areaHeight = value;
+                OnPropertyChanged("AreaHeight");
+            }
+        }
+
+        private double _areaWidth = 500;
+        public double AreaWidth
+        {
+            get { return _areaWidth; }
+            set
+            {
+                _areaWidth = value;
+                OnPropertyChanged("AreaWidth");
+            }
+        }
+
+        #endregion
     }
 }

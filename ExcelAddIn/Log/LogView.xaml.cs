@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using ExcelAddIn.Log;
+using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 
 namespace ExcelAddIn
 {
@@ -11,6 +13,16 @@ namespace ExcelAddIn
         {
             InitializeComponent();
             this.DataContext = new LogViewModel();
+        }
+
+        private void Thumb_DragDelta(object sender, DragDeltaEventArgs e)
+        {
+            var neuron = ((Thumb)sender).DataContext as DisplayNeuron;
+            if (neuron == null)
+                return;
+
+            neuron.X += e.HorizontalChange;
+            neuron.Y += e.VerticalChange;
         }
     }
 }

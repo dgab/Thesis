@@ -1,4 +1,5 @@
 ﻿
+using NeuralNet.Others;
 namespace ExcelAddIn.Log
 {
     public class DisplaySynapse : DisplayObject
@@ -15,24 +16,55 @@ namespace ExcelAddIn.Log
             set { }
         }
 
-        private DisplayNeuron _start;
-        public DisplayNeuron Start
+        private Synapse synapse;
+        public Synapse Synapse
         {
-            get { return _start; }
+            get
+            {
+                return synapse;
+            }
             set
             {
-                _start = value;
+                synapse = value;
+                OnPropertyChanged("Synapse");
+            }
+        }
+
+        public double Weight
+        {
+            get
+            {
+                if (Synapse.Weight < 0.3)
+                {
+                    return 0.3;
+                }
+                if (Synapse.Weight > 2.5)
+                {
+                    return 2.5;
+                }
+
+                return Synapse.Weight;
+            }
+        }
+
+        private DisplayNeuron start;
+        public DisplayNeuron Start
+        {
+            get { return start; }
+            set
+            {
+                start = value;
                 OnPropertyChanged("Start");
             }
         }
 
-        private DisplayNeuron _end;
+        private DisplayNeuron end;
         public DisplayNeuron End
         {
-            get { return _end; }
+            get { return end; }
             set
             {
-                _end = value;
+                end = value;
                 OnPropertyChanged("End");
             }
         }

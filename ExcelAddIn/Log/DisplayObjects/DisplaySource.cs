@@ -28,7 +28,7 @@ namespace ExcelAddIn.Log
 
         public void GetDisplayObjects()
         {
-            backpropNetwork.Initialize(3,4,5,4,3,2);
+            backpropNetwork.Initialize(6, 6, 6);
             double x = 50;
             double y = 50;
 
@@ -36,7 +36,7 @@ namespace ExcelAddIn.Log
             {
                 foreach (BaseNeuron n in l.Neurons)
                 {
-                    this.Neurons.Add(new DisplayNeuron() { X=x, Y=y, Neuron = n});
+                    this.Neurons.Add(new DisplayNeuron() { X = x, Y = y, Neuron = n });
                     y += 50;
                 }
                 y = 50;
@@ -50,6 +50,7 @@ namespace ExcelAddIn.Log
                     DisplaySynapse ds = new DisplaySynapse();
                     ds.Start = n;
                     ds.End = this.Neurons.First(c => c.Neuron == s.OutputNeuron);
+                    ds.Synapse = s;
                     this.Synapses.Add(ds);
                 }
             }
