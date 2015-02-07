@@ -25,7 +25,7 @@ namespace ExcelAddIn
             ts.Add(new TrainingSample(new List<double>() { 0, 0, 0, 0, 0, 0, 0, 0 }, new List<double> { 0.3, 0.5 }));
             bpn.Train(ts, int.MaxValue, 0.0000001);
 
-            logView.DataContext = bpn;
+            //logView.DataContext = bpn;
         }
     }
 }

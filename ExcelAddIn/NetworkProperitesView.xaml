@@ -5,8 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:dc="clr-namespace:ExcelAddIn">
     <Grid>
-        <Expander Header="Log">
-            <dc:LogView x:Name="logView"></dc:LogView>
-        </Expander>
+        <dc:LogView x:Name="logView">
+            </dc:LogView>
     </Grid>
 </Window>

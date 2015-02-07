@@ -163,6 +163,10 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="Log\DisplayObjects\DisplayNeuron.cs" />
+    <Compile Include="Log\DisplayObjects\DisplayObject.cs" />
+    <Compile Include="Log\DisplayObjects\DisplaySource.cs" />
+    <Compile Include="Log\DisplayObjects\DisplaySynapse.cs" />
     <Compile Include="Log\LogViewModel.cs" />
     <Compile Include="Log\LogView.xaml.cs">
       <DependentUpon>LogView.xaml</DependentUpon>
@@ -173,6 +177,7 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Network.cs" />
     <Compile Include="NetworkProperitesView.xaml.cs">
       <DependentUpon>NetworkProperitesView.xaml</DependentUpon>
     </Compile>
