@@ -34,10 +34,14 @@ namespace ExcelAddIn.Log
 
             foreach (Layer l in backpropNetwork.Layers)
             {
-                foreach (BaseNeuron n in l.Neurons)
+                foreach (Neuron n in l.Neurons.OfType<Neuron>())
                 {
                     this.Neurons.Add(new DisplayNeuron() { X = x, Y = y, Neuron = n });
                     y += 50;
+                }
+                if(l.Neurons.FirstOrDefault(b => b is BiasNeuron) != null)
+                {
+                    this.Neurons.Add(new DisplayNeuron() { X = x, Y = y, Neuron = l.Neurons.First(b => b is BiasNeuron) });
                 }
                 y = 50;
                 x += 50;

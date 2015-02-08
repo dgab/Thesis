@@ -34,9 +34,9 @@ namespace ExcelAddIn.Log
         {
             get
             {
-                if (Synapse.Weight < 0.3)
+                if (Synapse.Weight < 0.6)
                 {
-                    return 0.3;
+                    return 0.6;
                 }
                 if (Synapse.Weight > 2.5)
                 {

@@ -11,17 +11,28 @@
             <CollectionContainer Collection="{Binding DataContext.Synapses,Source={x:Reference view}}"/>
             <CollectionContainer Collection="{Binding DataContext.Neurons,Source={x:Reference view}}"/>
         </CompositeCollection>
+
+        <Style TargetType="Control" x:Key="EmptyFocusVisualStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </UserControl.Resources>
-    <Grid x:Name="a">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.Resources>
             <DataTemplate DataType="{x:Type local:DisplayNeuron}">
-                <Thumb DragDelta="Thumb_DragDelta">
+                <Thumb DragDelta="Thumb_DragDelta"
+                        IsEnabled="{Binding IsSelected,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}">
                     <Thumb.Template>
-                        <ControlTemplate>
+                        <ControlTemplate TargetType="Thumb">
                             <Canvas Margin="-10,-10,10,10">
                                 <Ellipse Height="20" 
                                  Width="20" 
@@ -37,16 +48,38 @@
             <DataTemplate DataType="{x:Type local:DisplaySynapse}">
                 <Line Stroke="Black" StrokeThickness="{Binding Weight}"
                           X1="{Binding Start.X}" Y1="{Binding Start.Y}"
-                          X2="{Binding End.X}" Y2="{Binding End.Y}"/>
+                          X2="{Binding End.X}" Y2="{Binding End.Y}"
+                          x:Name="Line"/>
+                <DataTemplate.Triggers>
+                    <Trigger Property="IsMouseOver" Value="true">
+                        <Setter TargetName="Line" Property="StrokeThickness" Value="3.5"/>
+                    </Trigger>
+                    <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}" Value="True">
+                        <Setter TargetName="Line" Property="Stroke" Value="Red"/>
+                        <Setter TargetName="Line" Property="StrokeDashArray" Value="2 3"/>
+                        <Setter TargetName="Line" Property="StrokeThickness" Value="3"/>
+                        <DataTrigger.EnterActions>
+                            <BeginStoryboard x:Name="DashAnimation">
+                                <Storyboard Duration="00:00:01" RepeatBehavior="Forever">
+                                    <DoubleAnimation From="0" To="50" Storyboard.TargetName="Line" Storyboard.TargetProperty="StrokeDashOffset"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </DataTrigger.EnterActions>
+                        <DataTrigger.ExitActions>
+                            <StopStoryboard BeginStoryboardName="DashAnimation"/>
+                        </DataTrigger.ExitActions>
+                    </DataTrigger>
+                </DataTemplate.Triggers>
             </DataTemplate>
         </Grid.Resources>
         <Border Grid.Column="1" Grid.RowSpan="1" BorderThickness="2,0" BorderBrush="Black"/>
         <StackPanel Grid.Column="0">
-            <xw:PropertyGrid SelectedObject="a">
-                
-            </xw:PropertyGrid>
+            <Expander Header="Select an object">
+                <xw:PropertyGrid SelectedObject="{Binding SelectedObject}"></xw:PropertyGrid>
+            </Expander>
         </StackPanel>
-        <ListBox Grid.Column="1">
+        <ListBox Grid.Column="1"
+                 SelectedItem="{Binding SelectedObject}">
             <ListBox.Template>
                 <ControlTemplate>
                     <Border>
@@ -79,6 +112,23 @@
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Canvas.Left" Value="{Binding X}"/>
                     <Setter Property="Canvas.Top" Value="{Binding Y}"/>
+                    <Setter Property="FocusVisualStyle" Value="{StaticResource EmptyFocusVisualStyle}"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <ContentPresenter x:Name="Content"/>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="Content" Property="Effect">
+                                            <Setter.Value>
+                                                <DropShadowEffect Color="Gray" ShadowDepth="3" BlurRadius="10"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
                 </Style>
             </ListBox.ItemContainerStyle>
         </ListBox>

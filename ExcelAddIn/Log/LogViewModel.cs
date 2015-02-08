@@ -23,6 +23,36 @@ namespace ExcelAddIn
                 return this.synapses ?? (synapses = new ObservableCollection<DisplaySynapse>());
             }
         }
+
+        private DisplayObject _selectedObject;
+        public DisplayObject SelectedObject
+        {
+            get
+            {
+                return _selectedObject;
+            }
+            set
+            {
+                //Nodes.ToList().ForEach(x => x.IsHighlighted = false);
+
+                _selectedObject = value;
+                OnPropertyChanged("SelectedObject");
+
+                //DeleteCommand.IsEnabled = value != null;
+
+                //var connector = value as Connector;
+                //if (connector != null)
+                //{
+                //    if (connector.Start != null)
+                //        connector.Start.IsHighlighted = true;
+
+                //    if (connector.End != null)
+                //        connector.End.IsHighlighted = true;
+                //}
+
+            }
+        }
+
         public LogViewModel()
         {
             DisplaySource ds = new DisplaySource();

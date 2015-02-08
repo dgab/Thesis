@@ -5,20 +5,6 @@ namespace ExcelAddIn.Log
     public abstract class DisplayObject : INotifyPropertyChanged
     {
 
-        private string name;
-        public string Name
-        {
-            get
-            {
-                return this.name;
-            }
-            set
-            {
-                this.name = value;
-                OnPropertyChanged("Name");
-            }
-        }
-
         public abstract double X { get; set; }
 
         public abstract double Y { get; set; }
