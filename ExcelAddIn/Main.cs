@@ -16,7 +16,7 @@ namespace ExcelAddIn
         private void button1_Click(object sender, RibbonControlEventArgs e)
         {
             NetworkProperitesView mv = new NetworkProperitesView();
-            mv.Show();
+            mv.ShowDialog();
         }
     }
 }

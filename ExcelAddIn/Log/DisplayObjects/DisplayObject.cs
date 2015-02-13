@@ -4,7 +4,6 @@ namespace ExcelAddIn.Log
 {
     public abstract class DisplayObject : INotifyPropertyChanged
     {
-
         public abstract double X { get; set; }
 
         public abstract double Y { get; set; }

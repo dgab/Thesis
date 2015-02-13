@@ -24,7 +24,7 @@
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.Resources>
@@ -38,9 +38,15 @@
                                  Width="20" 
                                  Stroke="Black" 
                                  StrokeThickness="1"
-                                 Fill="Blue">
+                                 Fill="Blue"
+                                 x:Name="Ellipse">
                                 </Ellipse>
                             </Canvas>
+                            <ControlTemplate.Triggers>
+                                <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}" Value="True">
+                                    <Setter TargetName="Ellipse" Property="Fill" Value="Green"/>
+                                </DataTrigger>
+                            </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Thumb.Template>
                 </Thumb>
@@ -55,7 +61,7 @@
                         <Setter TargetName="Line" Property="StrokeThickness" Value="3.5"/>
                     </Trigger>
                     <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}" Value="True">
-                        <Setter TargetName="Line" Property="Stroke" Value="Red"/>
+                        <Setter TargetName="Line" Property="Stroke" Value="Black"/>
                         <Setter TargetName="Line" Property="StrokeDashArray" Value="2 3"/>
                         <Setter TargetName="Line" Property="StrokeThickness" Value="3"/>
                         <DataTrigger.EnterActions>
@@ -72,12 +78,11 @@
                 </DataTemplate.Triggers>
             </DataTemplate>
         </Grid.Resources>
-        <Border Grid.Column="1" Grid.RowSpan="1" BorderThickness="2,0" BorderBrush="Black"/>
-        <StackPanel Grid.Column="0">
-            <Expander Header="Select an object">
-                <xw:PropertyGrid SelectedObject="{Binding SelectedObject}"></xw:PropertyGrid>
-            </Expander>
-        </StackPanel>
+        <xw:PropertyGrid Grid.Column="0"
+                         SelectedObject="{Binding SelectedObject}"
+                         VerticalAlignment="Stretch"
+                         HorizontalAlignment="Stretch"
+                         ShowSearchBox="False"/>
         <ListBox Grid.Column="1"
                  SelectedItem="{Binding SelectedObject}">
             <ListBox.Template>
@@ -93,6 +98,16 @@
                         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                             <Border>
                                 <ItemsPresenter/>
+                                <Border.Background>
+                                    <VisualBrush TileMode="Tile"
+                                        Viewport="0,0,50,50" ViewportUnits="Absolute" 
+                                        Viewbox="0,0,50,50" ViewboxUnits="Absolute">
+                                        <VisualBrush.Visual>
+                                            <Rectangle Stroke="Darkgray" StrokeThickness="1" Height="50" Width="50"
+                                            StrokeDashArray="1"/>
+                                        </VisualBrush.Visual>
+                                    </VisualBrush>
+                                </Border.Background>
                             </Border>
                         </ScrollViewer>
                     </Border>

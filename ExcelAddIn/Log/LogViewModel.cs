@@ -59,6 +59,13 @@ namespace ExcelAddIn
             ds.GetDisplayObjects();
             this.neurons = new ObservableCollection<DisplayNeuron>(ds.Neurons);
             this.synapses = new ObservableCollection<DisplaySynapse>(ds.Synapses);
+
+            if (this.neurons.Count != 0)
+            {
+                SelectedObject = this.neurons[0];
+            }
+
+            
         }
 
         #region INotifyPropertyChanged
