@@ -74,7 +74,7 @@ namespace ExcelAddIn.Log
             }
         }
 
-        [Category("Neuron properties")]
+        [Category("Neuron")]
         [DisplayName("Output")]
         [Description("Gets the Output of the neuron")]
         public string Output
@@ -85,7 +85,7 @@ namespace ExcelAddIn.Log
             }
         }
 
-        [Category("Neuron properties")]
+        [Category("Neuron")]
         [DisplayName("Type")]
         [Description("Gets the Type of the neuron")]
         public string Type
@@ -96,7 +96,7 @@ namespace ExcelAddIn.Log
             }
         }
 
-        [Category("Neuron properties")]
+        [Category("Neuron")]
         [DisplayName("Current Layer")]
         [Description("Gets the Current Layer of the neuron")]
         public string LayerType

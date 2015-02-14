@@ -166,6 +166,14 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="Init\RelayCommand.cs" />
+    <Compile Include="Init\DataGridComboBoxColumnWithBindingHack.cs" />
+    <Compile Include="Init\FunctionView.cs" />
+    <Compile Include="Init\InitView.xaml.cs">
+      <DependentUpon>InitView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Init\InitViewModel.cs" />
+    <Compile Include="Init\LayerView.cs" />
     <Compile Include="Log\DisplayObjects\DisplayNeuron.cs" />
     <Compile Include="Log\DisplayObjects\DisplayObject.cs" />
     <Compile Include="Log\DisplayObjects\DisplaySource.cs" />
@@ -220,6 +228,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Init\InitView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Log\LogView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

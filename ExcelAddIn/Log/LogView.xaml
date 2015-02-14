@@ -24,8 +24,8 @@
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="250"/>
         </Grid.ColumnDefinitions>
         <Grid.Resources>
             <DataTemplate DataType="{x:Type local:DisplayNeuron}">
@@ -78,12 +78,12 @@
                 </DataTemplate.Triggers>
             </DataTemplate>
         </Grid.Resources>
-        <xw:PropertyGrid Grid.Column="0"
+        <xw:PropertyGrid Grid.Column="1"
                          SelectedObject="{Binding SelectedObject}"
                          VerticalAlignment="Stretch"
                          HorizontalAlignment="Stretch"
                          ShowSearchBox="False"/>
-        <ListBox Grid.Column="1"
+        <ListBox Grid.Column="0"
                  SelectedItem="{Binding SelectedObject}">
             <ListBox.Template>
                 <ControlTemplate>

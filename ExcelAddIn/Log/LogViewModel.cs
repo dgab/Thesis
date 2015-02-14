@@ -60,12 +60,31 @@ namespace ExcelAddIn
             this.neurons = new ObservableCollection<DisplayNeuron>(ds.Neurons);
             this.synapses = new ObservableCollection<DisplaySynapse>(ds.Synapses);
 
+            Network.OnNetworkChanged += Network_OnNetworkChanged;
+        }
+
+        void Network_OnNetworkChanged(object sender, System.EventArgs e)
+        {
+            DisplaySource ds = new DisplaySource();
+            ds.GetDisplayObjects();
+            /*this.neurons = new ObservableCollection<DisplayNeuron>(ds.Neurons);
+            this.synapses = new ObservableCollection<DisplaySynapse>(ds.Synapses);*/
+            this.Neurons.Clear();
+            foreach (var item in ds.Neurons)
+            {
+                this.Neurons.Add(item);
+            }
+
+            this.Synapses.Clear();
+            foreach (var item in ds.Synapses)
+            {
+                this.Synapses.Add(item);
+            }
+
             if (this.neurons.Count != 0)
             {
                 SelectedObject = this.neurons[0];
             }
-
-            
         }
 
         #region INotifyPropertyChanged

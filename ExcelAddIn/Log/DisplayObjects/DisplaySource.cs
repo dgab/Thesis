@@ -28,7 +28,7 @@ namespace ExcelAddIn.Log
 
         public void GetDisplayObjects()
         {
-            backpropNetwork.Initialize(6, 6, 6);
+            //backpropNetwork.Initialize(6, 6, 6);
             double x = 50;
             double y = 50;
 
@@ -39,7 +39,7 @@ namespace ExcelAddIn.Log
                     this.Neurons.Add(new DisplayNeuron() { X = x, Y = y, Neuron = n });
                     y += 50;
                 }
-                if(l.Neurons.FirstOrDefault(b => b is BiasNeuron) != null)
+                if (l.Neurons.FirstOrDefault(b => b is BiasNeuron) != null)
                 {
                     this.Neurons.Add(new DisplayNeuron() { X = x, Y = y, Neuron = l.Neurons.First(b => b is BiasNeuron) });
                 }
