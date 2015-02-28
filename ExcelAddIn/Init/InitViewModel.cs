@@ -1,21 +1,19 @@
-﻿using ExcelAddIn.Log;
-using NeuralNet.Functions;
+﻿using NeuralNet.Functions;
 using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 
 namespace ExcelAddIn.Init
 {
-    public class InitViewModel : INotifyPropertyChanged
+    class InitViewModel : ViewModel
     {
         public ObservableCollection<LayerView> Layers { get; set; }
 
         public Array Functions { get; set; }
 
         private bool removeEnabled = false;
-        public bool RemoveEnabled 
-        { 
+        public bool RemoveEnabled
+        {
             get
             {
                 return this.removeEnabled;
@@ -42,11 +40,11 @@ namespace ExcelAddIn.Init
             Add = new RelayCommand(AddLayer);
             Remove = new RelayCommand(RemoveLayer);
             Init = new RelayCommand(Initialize);
-          
-           
+
+
         }
 
-        
+
 
         public void AddLayer()
         {
@@ -66,15 +64,5 @@ namespace ExcelAddIn.Init
             int[] sizes = Layers.Select(x => x.NumberOfNeurons).ToArray();
             Network.Initialize(sizes);
         }
-        #region INotifyPropertyChanged
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
-        }
-        #endregion
     }
 }

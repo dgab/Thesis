@@ -1,10 +1,9 @@
 ﻿using ExcelAddIn.Log;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 
 namespace ExcelAddIn
 {
-    public class LogViewModel : INotifyPropertyChanged
+    class LogViewModel : ViewModel
     {
         private ObservableCollection<DisplayNeuron> neurons;
         public ObservableCollection<DisplayNeuron> Neurons
@@ -86,18 +85,6 @@ namespace ExcelAddIn
                 SelectedObject = this.neurons[0];
             }
         }
-
-        #region INotifyPropertyChanged
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        #endregion
 
         #region Scrolling support
 
