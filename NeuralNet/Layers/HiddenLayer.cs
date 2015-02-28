@@ -34,7 +34,7 @@ namespace NeuralNet.Layers
                 Neurons = obj.Neurons,
                 TransferFunction = obj.TransferFunction
             };
-
+            hl.Neurons.ForEach(x => x.CurrentLayer = hl);
             hl.AddBiasNeuron();
 
             return hl;

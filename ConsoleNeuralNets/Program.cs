@@ -11,7 +11,7 @@ namespace ConsoleNeuralNets
     {
         static void Main(string[] args)
         {
-            BackpropNetwork bpn = new BackpropNetwork(0.9, 0.04);
+            BackpropNetwork bpn = new BackpropNetwork(0.5, 0.04);
             bpn.Initialize(7, 7, 1);
 
             TrainingSet ts = new TrainingSet(bpn.Layers.InputLayer, bpn.Layers.OutputLayer);
@@ -20,15 +20,15 @@ namespace ConsoleNeuralNets
             ts.Add(new TrainingSample(new List<double>() { 0, 0, 0, 0, 0, 0, 0 }, new List<double> { 0.3, 0.5, 0.6, 0.2 }));*/
 
             ts.Add(new TrainingSample(new List<double>() { 1, 1, 1, 1, 1, 1, 0 }, new List<double> { 0.05 }));
-            ts.Add(new TrainingSample(new List<double>() { 0, 1, 1, 0, 0, 0, 0 }, new List<double> { 0.1 }));
-            ts.Add(new TrainingSample(new List<double>() { 1, 1, 0, 1, 1, 0, 1 }, new List<double> { 0.2 }));
-            ts.Add(new TrainingSample(new List<double>() { 1, 1, 1, 1, 0, 0, 1 }, new List<double> { 0.3 }));
-            ts.Add(new TrainingSample(new List<double>() { 0, 1, 1, 0, 0, 1, 1 }, new List<double> { 0.4 }));
-            ts.Add(new TrainingSample(new List<double>() { 1, 0, 1, 1, 0, 1, 1 }, new List<double> { 0.5 }));
-            ts.Add(new TrainingSample(new List<double>() { 1, 0, 1, 1, 1, 1, 1 }, new List<double> { 0.6 }));
-            ts.Add(new TrainingSample(new List<double>() { 1, 1, 1, 0, 0, 0, 0 }, new List<double> { 0.7 }));
-            ts.Add(new TrainingSample(new List<double>() { 1, 1, 1, 1, 1, 1, 1 }, new List<double> { 0.8 }));
-            ts.Add(new TrainingSample(new List<double>() { 1, 1, 1, 1, 0, 1, 1 }, new List<double> { 0.9 }));
+            ts.Add(new TrainingSample(new List<double>() { 0, 1, 1, 0, 0, 0, 0 }, new List<double> { 0.15 }));
+            ts.Add(new TrainingSample(new List<double>() { 1, 1, 0, 1, 1, 0, 1 }, new List<double> { 0.25 }));
+            ts.Add(new TrainingSample(new List<double>() { 1, 1, 1, 1, 0, 0, 1 }, new List<double> { 0.35 }));
+            ts.Add(new TrainingSample(new List<double>() { 0, 1, 1, 0, 0, 1, 1 }, new List<double> { 0.45 }));
+            ts.Add(new TrainingSample(new List<double>() { 1, 0, 1, 1, 0, 1, 1 }, new List<double> { 0.55 }));
+            ts.Add(new TrainingSample(new List<double>() { 1, 0, 1, 1, 1, 1, 1 }, new List<double> { 0.65 }));
+            ts.Add(new TrainingSample(new List<double>() { 1, 1, 1, 0, 0, 0, 0 }, new List<double> { 0.75 }));
+            ts.Add(new TrainingSample(new List<double>() { 1, 1, 1, 1, 1, 1, 1 }, new List<double> { 0.85 }));
+            ts.Add(new TrainingSample(new List<double>() { 1, 1, 1, 1, 0, 1, 1 }, new List<double> { 0.95 }));
             bpn.TrainingEpochEvent += bpn_TrainingEpochEvent;
             bpn.Train(ts, int.MaxValue, 0.001);
 
