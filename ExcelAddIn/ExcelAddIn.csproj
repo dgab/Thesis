@@ -166,6 +166,7 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="CommandHandler.cs" />
     <Compile Include="Init\RelayCommand.cs" />
     <Compile Include="Init\DataGridComboBoxColumnWithBindingHack.cs" />
     <Compile Include="Init\FunctionView.cs" />
@@ -188,12 +189,20 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModalDialogService.cs" />
     <Compile Include="Network.cs" />
     <Compile Include="NetworkProperitesView.xaml.cs">
       <DependentUpon>NetworkProperitesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Train\TrainView.xaml.cs">
+      <DependentUpon>TrainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Train\TrainViewModel.cs" />
+    <Compile Include="Train\TrainWindow.xaml.cs">
+      <DependentUpon>TrainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel.cs" />
     <EmbeddedResource Include="Main.resx">
@@ -241,6 +250,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Train\TrainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Train\TrainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NeuralNet\NeuralNet.csproj">
@@ -248,9 +265,7 @@
       <Name>NeuralNet</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Train\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
