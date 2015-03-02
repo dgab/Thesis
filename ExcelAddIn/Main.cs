@@ -1,6 +1,4 @@
-﻿using ExcelAddIn.Train;
-using Microsoft.Office.Tools.Ribbon;
-using NeuralNet;
+﻿using Microsoft.Office.Tools.Ribbon;
 
 namespace ExcelAddIn
 {
@@ -13,9 +11,7 @@ namespace ExcelAddIn
 
         private void button1_Click(object sender, RibbonControlEventArgs e)
         {
-            NetworkProperitesView mv = new NetworkProperitesView();
-            mv.DataContext = new BackpropNetwork();
-            mv.ShowDialog();
+            ModalDialogService.Show(WindowTypes.NetworkProperties);
         }
 
         private void button2_Click(object sender, RibbonControlEventArgs e)

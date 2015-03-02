@@ -12,11 +12,5 @@ namespace ExcelAddIn.Train
             InitializeComponent();
             this.DataContext = new TrainViewModel();
         }
-
-        private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            TrainWindow tv = new TrainWindow();
-            tv.Show();
-        }
     }
 }

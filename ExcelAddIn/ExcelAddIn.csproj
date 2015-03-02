@@ -167,6 +167,7 @@
   -->
   <ItemGroup>
     <Compile Include="CommandHandler.cs" />
+    <Compile Include="Excel\ExcelRepresenter.cs" />
     <Compile Include="Init\RelayCommand.cs" />
     <Compile Include="Init\DataGridComboBoxColumnWithBindingHack.cs" />
     <Compile Include="Init\FunctionView.cs" />
