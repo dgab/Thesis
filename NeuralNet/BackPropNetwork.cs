@@ -24,6 +24,13 @@ namespace NeuralNet
         public TrainingSet TrainingSet { get; set; }
 
         private bool initialized = false;
+        public bool Initialized
+        {
+            get
+            {
+                return this.initialized;
+            }
+        }
         public double Eta
         {
             get

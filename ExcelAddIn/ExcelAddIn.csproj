@@ -184,10 +184,10 @@
     <Compile Include="Log\LogView.xaml.cs">
       <DependentUpon>LogView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Main.cs">
+    <Compile Include="Main\Main.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Main.Designer.cs">
+    <Compile Include="Main\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="ModalDialogService.cs" />
@@ -198,6 +198,12 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="TaskPane.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TaskPane.Designer.cs">
+      <DependentUpon>TaskPane.cs</DependentUpon>
+    </Compile>
     <Compile Include="Train\TrainView.xaml.cs">
       <DependentUpon>TrainView.xaml</DependentUpon>
     </Compile>
@@ -206,7 +212,7 @@
       <DependentUpon>TrainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel.cs" />
-    <EmbeddedResource Include="Main.resx">
+    <EmbeddedResource Include="Main\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -218,6 +224,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TaskPane.resx">
+      <DependentUpon>TaskPane.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="ExcelAddIn_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -40,11 +40,7 @@ namespace ExcelAddIn.Init
             Add = new RelayCommand(AddLayer);
             Remove = new RelayCommand(RemoveLayer);
             Init = new RelayCommand(Initialize);
-
-
         }
-
-
 
         public void AddLayer()
         {

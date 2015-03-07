@@ -8,6 +8,7 @@ namespace ExcelAddIn
         TrainWindow,
         NetworkProperties
     }
+
     static class ModalDialogService
     {
         private static Thread thread;
@@ -20,7 +21,7 @@ namespace ExcelAddIn
         }
     }
 
-    static class WindowFactory
+    internal static class WindowFactory
     {
         public static void CreateWindow(WindowTypes type)
         {

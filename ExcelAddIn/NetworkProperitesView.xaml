@@ -8,12 +8,6 @@
              MinWidth="550" MinHeight="400"
              Title="Network Properties">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="220"/>
-            <ColumnDefinition Width="3*"/>
-        </Grid.ColumnDefinitions>
-        <local:LogView Grid.Column="1" x:Name="logView"/>
-        <dc:InitView Grid.Column="0" Width="220"/>
-
+        <local:LogView x:Name="logView"/>
     </Grid>
 </Window>
