@@ -192,18 +192,19 @@
     </Compile>
     <Compile Include="ModalDialogService.cs" />
     <Compile Include="Network.cs" />
-    <Compile Include="NetworkProperitesView.xaml.cs">
+    <Compile Include="Log\NetworkProperitesView.xaml.cs">
       <DependentUpon>NetworkProperitesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TaskPane.cs">
+    <Compile Include="TaskPane\TaskPane.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TaskPane.Designer.cs">
+    <Compile Include="TaskPane\TaskPane.Designer.cs">
       <DependentUpon>TaskPane.cs</DependentUpon>
     </Compile>
+    <Compile Include="TaskPane\TaskPaneViewModel.cs" />
     <Compile Include="Train\TrainView.xaml.cs">
       <DependentUpon>TrainView.xaml</DependentUpon>
     </Compile>
@@ -224,10 +225,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="TaskPane.resx">
+    <EmbeddedResource Include="TaskPane\TaskPane.resx">
       <DependentUpon>TaskPane.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ExcelAddIn_TemporaryKey.pfx" />
+    <None Include="Properties\DataSources\TaskPaneViewModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -256,7 +258,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="NetworkProperitesView.xaml">
+    <Page Include="Log\NetworkProperitesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

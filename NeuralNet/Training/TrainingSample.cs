@@ -35,5 +35,10 @@ namespace NeuralNet.Training
                 this.Targets.Add(d);
             }
         }
+
+        public override string ToString()
+        {
+            return "Training Sample";
+        }
     }
 }

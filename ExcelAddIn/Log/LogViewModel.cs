@@ -59,6 +59,7 @@ namespace ExcelAddIn
             this.neurons = new ObservableCollection<DisplayNeuron>(ds.Neurons);
             this.synapses = new ObservableCollection<DisplaySynapse>(ds.Synapses);
 
+            this.SelectedObject = this.Neurons.Count != 0 ? this.Neurons[0] : null; 
             Network.OnNetworkChanged += Network_OnNetworkChanged;
         }
 

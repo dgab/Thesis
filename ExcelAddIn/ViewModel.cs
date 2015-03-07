@@ -1,5 +1,6 @@
 ﻿
 using System.ComponentModel;
+using System.Windows.Input;
 namespace ExcelAddIn
 {
     abstract class ViewModel : INotifyPropertyChanged
@@ -10,6 +11,11 @@ namespace ExcelAddIn
         {
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public void Execute(ICommand command)
+        {
+            command.Execute(null);
         }
     }
 }

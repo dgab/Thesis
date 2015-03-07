@@ -46,7 +46,9 @@ namespace ExcelAddIn
 
         private void btnShowNet_Click(object sender, RibbonControlEventArgs e)
         {
-            ModalDialogService.Show(WindowTypes.NetworkProperties);
+            //ModalDialogService.Show(WindowTypes.NetworkProperties); //Suspicious thread error aka: cannot access object because different thread owns it. (object = window)
+            NetworkProperitesView view = new NetworkProperitesView();
+            view.ShowDialog();
         }
     }
 }
