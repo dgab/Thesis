@@ -28,7 +28,11 @@ namespace ExcelAddIn
         {
             get
             {
-                return userControls.Count != currentIndex + 1;
+                return (Network.Default.Initialized) && (userControls.Count != currentIndex + 1);
+            }
+            set
+            {
+                OnPropertyChanged("NextEnabled");
             }
         }
 
@@ -105,6 +109,13 @@ namespace ExcelAddIn
         {
             userControls = new List<UserControl> { init, train };
             this.CurrentControl = init;
+            Network.OnNetworkChanged += Network_OnNetworkChanged;
+        }
+
+        void Network_OnNetworkChanged(object sender, System.EventArgs e)
+        {
+            this.NextEnabled = true;
+            //This is dummy data, NextEnabled setter only calls the OnPropertyChanged
         }
 
         private static UserControl GetStartingControl()

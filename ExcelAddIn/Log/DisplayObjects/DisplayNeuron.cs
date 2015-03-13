@@ -1,7 +1,7 @@
-﻿using NeuralNet.Neurons;
+﻿using NeuralNet.Layers;
+using NeuralNet.Neurons;
 using System;
 using System.ComponentModel;
-using System.Windows.Media;
 namespace ExcelAddIn.Log
 {
     [DisplayName("Ellipse")]
@@ -66,11 +66,18 @@ namespace ExcelAddIn.Log
         [Category("Neuron")]
         [DisplayName("Input")]
         [Description("Gets the Input of the neuron")]
-        public string Input
+        public double Input
         {
             get
             {
-                return Neuron.Input.ToString("N3");
+                return Neuron.Input;//.ToString("N3");
+            }
+            set
+            {
+                if (Neuron.CurrentLayer is InputLayer && !(Neuron is BiasNeuron))
+                {
+                    Neuron.Input = value;
+                }
             }
         }
 

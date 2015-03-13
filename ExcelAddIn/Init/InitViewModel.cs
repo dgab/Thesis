@@ -1,4 +1,5 @@
 ﻿using NeuralNet.Functions;
+using NeuralNet.Layers;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -59,6 +60,11 @@ namespace ExcelAddIn.Init
         {
             int[] sizes = Layers.Select(x => x.NumberOfNeurons).ToArray();
             Network.Initialize(sizes);
+
+            for (int i = 0; i < Network.Default.Layers.Count; i++)
+            {
+                Network.Default.Layers[i].TransferFunction = Layers[i].Function;
+            }
         }
     }
 }

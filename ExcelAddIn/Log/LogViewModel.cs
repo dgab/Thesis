@@ -1,5 +1,6 @@
 ﻿using ExcelAddIn.Log;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace ExcelAddIn
 {
@@ -20,6 +21,19 @@ namespace ExcelAddIn
             get
             {
                 return this.synapses ?? (synapses = new ObservableCollection<DisplaySynapse>());
+            }
+        }
+
+        private ICommand runCommand;
+        public ICommand RunCommand
+        {
+            get
+            {
+                if (runCommand == null)
+                {
+                    runCommand = new CommandHandler(() => Run(), true);
+                }
+                return runCommand;
             }
         }
 
@@ -59,7 +73,7 @@ namespace ExcelAddIn
             this.neurons = new ObservableCollection<DisplayNeuron>(ds.Neurons);
             this.synapses = new ObservableCollection<DisplaySynapse>(ds.Synapses);
 
-            this.SelectedObject = this.Neurons.Count != 0 ? this.Neurons[0] : null; 
+            this.SelectedObject = this.Neurons.Count != 0 ? this.Neurons[0] : null;
             Network.OnNetworkChanged += Network_OnNetworkChanged;
         }
 
@@ -87,6 +101,10 @@ namespace ExcelAddIn
             }
         }
 
+        private void Run()
+        {
+            Network.Default.Run();
+        }
         #region Scrolling support
 
         private double _areaHeight = 500;

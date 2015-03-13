@@ -119,7 +119,7 @@ namespace NeuralNet
                     }
                 }
 
-                return error / this.Layers.OutputLayer.Neurons.Count;
+                return error / 2;/// this.Layers.OutputLayer.Neurons.Count;
             }
             else
             {
@@ -132,7 +132,7 @@ namespace NeuralNet
             double error = 1;
             int currentIteration = 0;
 
-            while (error > errorLevel && iterations >= currentIteration)
+            while (error > errorLevel && iterations > currentIteration)
             {
                 error = this.Train(ts);
                 currentIteration++;
@@ -144,6 +144,14 @@ namespace NeuralNet
         {
             this.Layers.InputLayer.AddInputs(inputs);
 
+            foreach (Layer l in this.Layers)
+            {
+                l.CalculateOutputs();
+            }
+        }
+
+        public void Run()
+        {
             foreach (Layer l in this.Layers)
             {
                 l.CalculateOutputs();

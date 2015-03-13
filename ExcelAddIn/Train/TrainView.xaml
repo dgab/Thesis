@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="300">
+             d:DesignHeight="400" d:DesignWidth="300"
+             xmlns:local="clr-namespace:ExcelAddIn.Train" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
@@ -56,31 +57,31 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Log">
-                <RichTextBox/>
+                <ListView ItemsSource="{Binding Errors}"/>
             </TabItem>
         </TabControl>
 
         <GroupBox Header="Learning Rate" Grid.Row="2" Grid.Column="0">
             <Grid>
-                <TextBox FontSize="8"/>
+                <TextBox FontSize="8" Text="{Binding Eta}"/>
             </Grid>
         </GroupBox>
         <GroupBox Header="Momentum" Grid.Row="2" Grid.Column="1">
             <Grid>
-                <TextBox FontSize="8"/>
+                <TextBox FontSize="8" Text="{Binding Momentum}"/>
             </Grid>
         </GroupBox>
         <GroupBox Header="Training Iteration" Grid.Row="3" Grid.Column="0">
             <Grid>
-                <TextBox FontSize="8"/>
+                <TextBox FontSize="8" Text="{Binding Iteration}"/>
             </Grid>
         </GroupBox>
         <GroupBox Header="Max Error" Grid.Row="3" Grid.Column="1">
             <Grid>
-                <TextBox FontSize="8"/>
+                <TextBox FontSize="8" Text="{Binding Error}"/>
             </Grid>
         </GroupBox>
-        <Button Grid.Row="4" Grid.Column="1" Margin="40,0,10,0">
+        <Button Grid.Row="4" Grid.Column="1" Margin="40,0,10,0" Command="{Binding TrainCommand}">
             <TextBlock Text="Train"/>
         </Button>
     </Grid>

@@ -21,12 +21,14 @@ namespace NeuralNet.Neurons
             {
                 this.Gradient += s.OutputNeuron.Gradient * s.Weight;
             }
-            this.Gradient *= this.CurrentLayer.Function.ApplyFunction(this.Output);
+            //this.Gradient *= this.CurrentLayer.Function.ApplyFunction(this.Output);
+            this.Gradient *= this.CurrentLayer.Function.Derivative(this.Output);
         }
 
         public void CalculateOutputGradient(double target)
         {
-            this.Gradient = (target - this.Output) * this.CurrentLayer.Function.ApplyFunction(this.Output);
+            //this.Gradient = (target - this.Output) * this.CurrentLayer.Function.ApplyFunction(this.Output);
+            this.Gradient = (target - this.Output) * this.CurrentLayer.Function.Derivative(this.Output);
         }
     }
 }

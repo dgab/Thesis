@@ -12,6 +12,8 @@
             <CollectionContainer Collection="{Binding DataContext.Neurons,Source={x:Reference view}}"/>
         </CompositeCollection>
 
+
+
         <Style TargetType="Control" x:Key="EmptyFocusVisualStyle">
             <Setter Property="Template">
                 <Setter.Value>
@@ -83,6 +85,10 @@
                          VerticalAlignment="Stretch"
                          HorizontalAlignment="Stretch"
                          ShowSearchBox="False"/>
+        <Button Grid.Column="1" Width="75" Height="25" Margin="165,25,10,405" Command="{Binding RunCommand}">
+            <TextBlock Text="Run"></TextBlock>
+        </Button>
+
         <ListBox Grid.Column="0"
                  SelectedItem="{Binding SelectedObject}">
             <ListBox.Template>
