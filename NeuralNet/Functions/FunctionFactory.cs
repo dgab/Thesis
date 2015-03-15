@@ -6,7 +6,7 @@ namespace NeuralNet.Functions
     {
         Sigmoid,
         Identity,
-        Step
+        Tanh
     }
     public static class FunctionFactory
     {
@@ -22,8 +22,8 @@ namespace NeuralNet.Functions
                 case TransferFunctions.Identity:
                     result = new IdentityFunction();
                     break;
-                case TransferFunctions.Step:
-                    result = new StepFunction();
+                case TransferFunctions.Tanh:
+                    result = new HiperbolicTangentFunction();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException("Not a valid function!");

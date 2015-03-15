@@ -177,7 +177,11 @@ namespace ExcelAddIn.Train
             {
                 uiContext.Send(x => Errors.RemoveAt(99), null);
             }
-            uiContext.Send(x => Errors.Insert(0, e.Error), null);
+            if (e.CurrentIteration % 1000 == 0 || e.CurrentIteration == 1 || e.CurrentIteration == this.Iteration)
+            {
+                uiContext.Send(x => Errors.Insert(0, e.Error), null);
+            }
+
             //uiContext.Send(x => Listview);
             //Errors.Add(e.Error);
         }

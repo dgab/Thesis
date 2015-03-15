@@ -20,6 +20,10 @@ namespace NeuralNet.Neurons
             foreach (Synapse s in this.SynapsesOut)
             {
                 this.Gradient += s.OutputNeuron.Gradient * s.Weight;
+                if (double.IsNaN(this.Gradient))
+                {
+                    System.Console.WriteLine("asd");
+                }
             }
             //this.Gradient *= this.CurrentLayer.Function.ApplyFunction(this.Output);
             this.Gradient *= this.CurrentLayer.Function.Derivative(this.Output);
