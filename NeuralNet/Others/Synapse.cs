@@ -17,7 +17,7 @@ namespace NeuralNet.Others
 
         public void Update()
         {
-            this.Delta = NetworkVariables.Eta * this.InputNeuron.Input * this.OutputNeuron.Gradient;
+            this.Delta = NetworkVariables.Eta * this.InputNeuron.Output * this.OutputNeuron.Gradient;
             this.Weight += this.Delta;
             this.Weight += NetworkVariables.Momentum * this.PreviousDelta;
             this.PreviousDelta = this.Delta;
