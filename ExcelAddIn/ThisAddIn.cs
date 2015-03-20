@@ -1,12 +1,14 @@
 ﻿
-using Microsoft.Office.Tools;
+using Microsoft.Office.Interop.Excel;
 namespace ExcelAddIn
 {
     public partial class ThisAddIn
     {
+        public static Application CurrentApplication;
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
             Main m = new Main();
+            ThisAddIn.CurrentApplication = this.Application;
         }
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)

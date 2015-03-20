@@ -1,10 +1,9 @@
 ﻿using ExcelAddIn.Excel;
 using NeuralNet.Training;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Threading;
+using System.Windows;
 using System.Windows.Input;
 
 namespace ExcelAddIn.Train
@@ -99,44 +98,15 @@ namespace ExcelAddIn.Train
 
         private void GetTrainingSamplesFromExelSheet()
         {
-            /*Application ExApp = Globals.ThisAddIn.Application as Application;
-            Range SelectedRange = ExApp.Selection as Range;*/
-            ExcelRepresenter representer = ExcelRepresenter.GetCurrentWorkSheet();
-            DataTable dt = representer.GetSelectedCells();
+            IExcelRepresenter representer = new ExcelRepresenter();
 
-            TrainingSamples.Clear();
-
-            int input = 0;
-            int target = 0;
-            for (int i = 0; i < dt.Columns.Count; i++)
+            try
             {
-                string asd = dt.Rows[0][i].ToString();
-                if (asd == "in")
-                {
-                    input++;
-                }
-                else
-                {
-                    target++;
-                }
+                DataTable selectedCells = representer.ConvertSelectedRangeToDataTable();
             }
-
-            for (int i = 1; i < dt.Rows.Count; i++)
+            catch (RangeWasNullException)
             {
-                List<double> inputs = new List<double>();
-                List<double> targets = new List<double>();
-
-                for (int j = 0; j < input; j++)
-                {
-                    inputs.Add(Convert.ToDouble(dt.Rows[i][j]));
-                }
-                for (int k = input; k < dt.Columns.Count; k++)
-                {
-                    targets.Add(Convert.ToDouble(dt.Rows[i][k]));
-                }
-
-                TrainingSample ts = new TrainingSample(inputs, targets);
-                TrainingSamples.Add(ts);
+                MessageBox.Show("No cells were selected! Select some.", "Neural Net", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
         }
 

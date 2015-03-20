@@ -11,22 +11,20 @@ namespace ConsoleNeuralNets
     {
         static void Main(string[] args)
         {
-            /* BackpropNetwork bpn = new BackpropNetwork(0.05, 0.04);
-             bpn.Initialize(2, 2, 1);
-             bpn.Layers.OutputLayer.TransferFunction = NeuralNet.Functions.TransferFunctions.Identity;
-             TrainingSet ts = new TrainingSet(bpn.Layers.InputLayer, bpn.Layers.OutputLayer);
-             ts.Add(new TrainingSample(new List<double>() { 0, 0 }, new List<double> { 0.1 }));
-             ts.Add(new TrainingSample(new List<double>() { 0, 1 }, new List<double> { 0.9 }));
-             ts.Add(new TrainingSample(new List<double>() { 1, 0 }, new List<double> { 0.9 }));
-             ts.Add(new TrainingSample(new List<double>() { 1, 1 }, new List<double> { 0.1 }));*/
-            BackpropNetwork bpn = new BackpropNetwork(0.2, 0.04);
+            /*BackpropNetwork bpn = new BackpropNetwork(0.05, 0.04);
+            bpn.Initialize(2, 2, 1);
+            bpn.Layers[1].TransferFunction = NeuralNet.Functions.TransferFunctions.Tanh;
+            bpn.Layers.OutputLayer.TransferFunction = NeuralNet.Functions.TransferFunctions.Identity;
+            TrainingSet ts = new TrainingSet(bpn.Layers.InputLayer, bpn.Layers.OutputLayer);
+            ts.Add(new TrainingSample(new List<double>() { 0, 0 }, new List<double> { 4 }));
+            ts.Add(new TrainingSample(new List<double>() { 0, 1 }, new List<double> { 1 }));
+            ts.Add(new TrainingSample(new List<double>() { 1, 0 }, new List<double> { 1 }));
+            ts.Add(new TrainingSample(new List<double>() { 1, 1 }, new List<double> { 0 }));*/
+            BackpropNetwork bpn = new BackpropNetwork(0.8, 0.04);
             bpn.Initialize(7, 7, 1);
             bpn.Layers[1].TransferFunction = NeuralNet.Functions.TransferFunctions.Tanh;
             bpn.Layers.OutputLayer.TransferFunction = NeuralNet.Functions.TransferFunctions.Tanh;
             TrainingSet ts = new TrainingSet(bpn.Layers.InputLayer, bpn.Layers.OutputLayer);
-            //ts.Add(new TrainingSample(new List<double>() { 1, 0, 1, 0, 1, 0, 1 }, new List<double> { 0.1, 0.2, 0.3, 0.4}));
-            //ts.Add(new TrainingSample(new List<double>() { 1, 1, 1, 1, 1, 1, 1 }, new List<double> { 0.2, 0.3, 0.7, 0.8}));
-            //ts.Add(new TrainingSample(new List<double>() { 0, 0, 0, 0, 0, 0, 0 }, new List<double> { 0.3, 0.5, 0.6, 0.2 }));
 
             ts.Add(new TrainingSample(new List<double>() { 1, 1, 1, 1, 1, 1, 0 }, new List<double> { 0.05 }));
             ts.Add(new TrainingSample(new List<double>() { 0, 1, 1, 0, 0, 0, 0 }, new List<double> { 0.15 }));
@@ -38,6 +36,17 @@ namespace ConsoleNeuralNets
             ts.Add(new TrainingSample(new List<double>() { 1, 1, 1, 0, 0, 0, 0 }, new List<double> { 0.75 }));
             ts.Add(new TrainingSample(new List<double>() { 1, 1, 1, 1, 1, 1, 1 }, new List<double> { 0.85 }));
             ts.Add(new TrainingSample(new List<double>() { 1, 1, 1, 1, 0, 1, 1 }, new List<double> { 0.95 }));
+
+            /*ts.Add(new TrainingSample(new List<double>() { 1, 1, 1, 1, 1, 1, 0 }, new List<double> { 0, 0, 0, 0 }));
+            ts.Add(new TrainingSample(new List<double>() { 0, 1, 1, 0, 0, 0, 0 }, new List<double> { 0, 0, 0, 1 }));
+            ts.Add(new TrainingSample(new List<double>() { 1, 1, 0, 1, 1, 0, 1 }, new List<double> { 0, 0, 1, 0 }));
+            ts.Add(new TrainingSample(new List<double>() { 1, 1, 1, 1, 0, 0, 1 }, new List<double> { 0, 0, 1, 1 }));
+            ts.Add(new TrainingSample(new List<double>() { 0, 1, 1, 0, 0, 1, 1 }, new List<double> { 0, 1, 0, 0 }));
+            ts.Add(new TrainingSample(new List<double>() { 1, 0, 1, 1, 0, 1, 1 }, new List<double> { 0, 1, 0, 1 }));
+            ts.Add(new TrainingSample(new List<double>() { 1, 0, 1, 1, 1, 1, 1 }, new List<double> { 0, 1, 1, 0 }));
+            ts.Add(new TrainingSample(new List<double>() { 1, 1, 1, 0, 0, 0, 0 }, new List<double> { 0, 1, 1, 1 }));
+            ts.Add(new TrainingSample(new List<double>() { 1, 1, 1, 1, 1, 1, 1 }, new List<double> { 1, 0, 0, 0 }));
+            ts.Add(new TrainingSample(new List<double>() { 1, 1, 1, 1, 0, 1, 1 }, new List<double> { 1, 0, 0, 1 }));*/
             bpn.TrainingEpochEvent += bpn_TrainingEpochEvent;
             bpn.Train(ts, int.MaxValue, 0.00001);
 
