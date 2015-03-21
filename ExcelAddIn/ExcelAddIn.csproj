@@ -171,6 +171,10 @@
     <Compile Include="Excel\ExcelRepresenter.cs" />
     <Compile Include="Excel\IExcelRepresenter.cs" />
     <Compile Include="Excel\RangeWasNullException.cs" />
+    <Compile Include="Import\ImportView.xaml.cs">
+      <DependentUpon>ImportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Import\ImportViewModel.cs" />
     <Compile Include="Init\RelayCommand.cs" />
     <Compile Include="Init\DataGridComboBoxColumnWithBindingHack.cs" />
     <Compile Include="Init\FunctionView.cs" />
@@ -256,6 +260,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Import\ImportView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Init\InitView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

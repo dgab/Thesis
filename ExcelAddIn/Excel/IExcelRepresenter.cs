@@ -5,11 +5,11 @@ namespace ExcelAddIn.Excel
 {
     interface IExcelRepresenter
     {
-        Application Application { get;  }
+        Application Application { get; }
 
-        Workbook ActiveWorkbook { get;  }
+        Workbook ActiveWorkbook { get; }
 
-        Worksheet ActiveWorksheet { get;  }
+        Worksheet ActiveWorksheet { get; }
 
         Data.DataTable ConvertSelectedRangeToDataTable();
     }

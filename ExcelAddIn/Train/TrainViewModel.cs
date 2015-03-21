@@ -1,5 +1,8 @@
 ﻿using ExcelAddIn.Excel;
+using ExcelAddIn.Import;
 using NeuralNet.Training;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Threading;
@@ -99,14 +102,44 @@ namespace ExcelAddIn.Train
         private void GetTrainingSamplesFromExelSheet()
         {
             IExcelRepresenter representer = new ExcelRepresenter();
-
             try
             {
                 DataTable selectedCells = representer.ConvertSelectedRangeToDataTable();
+                ImportView view = new ImportView(selectedCells);
+                view.OnImported += view_OnImported;
+                view.Show();
             }
             catch (RangeWasNullException)
             {
                 MessageBox.Show("No cells were selected! Select some.", "Neural Net", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+        }
+
+        void view_OnImported(object sender, System.EventArgs e)
+        {
+            this.TrainingSamples.Clear();
+
+            DataTable dt = (DataTable)sender;
+
+            foreach (DataRow row in dt.Rows)
+            {
+                List<double> inputs = new List<double>();
+                List<double> targets = new List<double>();
+
+                for (int i = 0; i < dt.Columns.Count; i++)
+                {
+                    if (dt.Columns[i].ColumnName.StartsWith("Input"))
+                    {
+                        inputs.Add(Convert.ToDouble(row[i].ToString())); //at this point it surely is double
+                    }
+                    else
+                    {
+                        targets.Add(Convert.ToDouble(row[i].ToString()));
+                    }
+                }
+
+                TrainingSample ts = new TrainingSample(inputs, targets);
+                this.TrainingSamples.Add(ts);
             }
         }
 
