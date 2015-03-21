@@ -80,14 +80,20 @@
                 </DataTemplate.Triggers>
             </DataTemplate>
         </Grid.Resources>
-        <xw:PropertyGrid Grid.Column="1"
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="25"/>
+            </Grid.RowDefinitions>
+            <xw:PropertyGrid Grid.Row="0"
                          SelectedObject="{Binding SelectedObject}"
                          VerticalAlignment="Stretch"
                          HorizontalAlignment="Stretch"
                          ShowSearchBox="False"/>
-        <Button Grid.Column="1" Width="75" Height="25" Margin="165,25,10,405" Command="{Binding RunCommand}">
-            <TextBlock Text="Run"></TextBlock>
-        </Button>
+            <Button Grid.Row="1" Command="{Binding RunCommand}">
+                <TextBlock Text="Run"></TextBlock>
+            </Button>
+        </Grid>
 
         <ListBox Grid.Column="0"
                  SelectedItem="{Binding SelectedObject}">
