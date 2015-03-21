@@ -11,7 +11,6 @@ namespace NeuralNet
     public class BackpropNetwork
     {
         public event TrainingEpochDelegate TrainingEpochEvent;
-
         public void OnTrainingEpoch(object sender, TrainingEpochEventArgs e)
         {
             if (this.TrainingEpochEvent != null)
@@ -19,6 +18,7 @@ namespace NeuralNet
                 this.TrainingEpochEvent(sender, e);
             }
         }
+
         public LayerCollection Layers { get; set; }
 
         public TrainingSet TrainingSet { get; set; }
@@ -54,6 +54,8 @@ namespace NeuralNet
                 NetworkVariables.Momentum = value;
             }
         }
+
+        private bool stopTraining = false;
 
         public BackpropNetwork()
         {
@@ -131,15 +133,25 @@ namespace NeuralNet
         {
             double error = 1;
             int currentIteration = 0;
+            this.stopTraining = false;
 
             while (error > errorLevel && iterations > currentIteration)
             {
+                if (this.stopTraining)
+                {
+                    break;
+                }
+
                 error = this.Train(ts);
                 currentIteration++;
                 this.OnTrainingEpoch(this, new TrainingEpochEventArgs(error, currentIteration));
             }
         }
 
+        public void StopTraining()
+        {
+            this.stopTraining = true;
+        }
         public void Run(List<double> inputs)
         {
             this.Layers.InputLayer.AddInputs(inputs);

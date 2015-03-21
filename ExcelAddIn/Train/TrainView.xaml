@@ -81,8 +81,18 @@
                 <TextBox FontSize="8" Text="{Binding Error}"/>
             </Grid>
         </GroupBox>
-        <Button Grid.Row="4" Grid.Column="1" Margin="40,0,10,0" Command="{Binding TrainCommand}">
-            <TextBlock Text="Train"/>
-        </Button>
+        <Grid Grid.Row="4" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Row="0" Grid.Column="1" Command="{Binding TrainCommand}" IsEnabled="{Binding TrainEnabled}">
+                <TextBlock Text="Train"/>
+            </Button>
+            <Button Grid.Row="0" Grid.Column="0" Command="{Binding StopCommand}" IsEnabled="{Binding StopEnabled}">
+                <TextBlock Text="Stop"/>
+            </Button>
+        </Grid>
+
     </Grid>
 </UserControl>

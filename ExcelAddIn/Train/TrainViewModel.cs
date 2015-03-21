@@ -49,6 +49,8 @@ namespace ExcelAddIn.Train
             set { iteration = value; }
         }
 
+
+
         public BindingList<double> Errors { get; set; }
 
         public BindingList<TrainingSample> TrainingSamples { get; set; }
@@ -64,6 +66,38 @@ namespace ExcelAddIn.Train
                 OnPropertyChanged("SelectedItem");
             }
         }
+
+        private bool trainEnabled = true;
+
+        public bool TrainEnabled
+        {
+            get
+            {
+                return trainEnabled;
+            }
+            set
+            {
+                trainEnabled = value;
+                OnPropertyChanged("TrainEnabled");
+            }
+        }
+
+        private bool stopEnabled;
+
+        public bool StopEnabled
+        {
+            get
+            {
+                return stopEnabled;
+            }
+            set
+            {
+                stopEnabled = value;
+                OnPropertyChanged("StopEnabled");
+            }
+        }
+
+
 
         public TrainViewModel()
         {
@@ -98,6 +132,19 @@ namespace ExcelAddIn.Train
             }
         }
 
+        private ICommand stopCommand;
+
+        public ICommand StopCommand
+        {
+            get
+            {
+                if (stopCommand == null)
+                {
+                    stopCommand = new CommandHandler(() => StopTraining(), true);
+                }
+                return stopCommand;
+            }
+        }
 
         private void GetTrainingSamplesFromExelSheet()
         {
@@ -149,10 +196,19 @@ namespace ExcelAddIn.Train
 
             Errors.Clear();
 
-            BackgroundWorker worker = new BackgroundWorker();
-            worker.DoWork += worker_DoWork;
-            worker.RunWorkerCompleted += worker_RunWorkerCompleted;
-            worker.RunWorkerAsync();
+            using (BackgroundWorker worker = new BackgroundWorker())
+            {
+                worker.DoWork += worker_DoWork;
+                worker.RunWorkerCompleted += worker_RunWorkerCompleted;
+                this.TrainEnabled = false;
+                this.StopEnabled = true;
+                worker.RunWorkerAsync();
+            }
+        }
+
+        public void StopTraining()
+        {
+            Network.Default.StopTraining();
         }
 
         void worker_DoWork(object sender, DoWorkEventArgs e)
@@ -172,6 +228,8 @@ namespace ExcelAddIn.Train
         void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             Network.Default.TrainingEpochEvent -= Default_TrainingEpochEvent; //Le kell róla íratkozni, mert a következő indításkor már kétszer íratkozik fel, stb...
+            this.TrainEnabled = true;
+            this.StopEnabled = false;
         }
 
         void Default_TrainingEpochEvent(object sender, TrainingEpochEventArgs e)
