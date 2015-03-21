@@ -30,14 +30,11 @@
                 <Button Command="{Binding ImportCommand}">
                     <TextBlock Text="Import"/>
                 </Button>
-                <Button>
-                    <TextBlock Text="Export"/>
-                </Button>
-                <Button>
-                    <TextBlock Text="Add"/>
-                </Button>
-                <Button>
+                <Button Command="{Binding RemoveCommand}">
                     <TextBlock Text="Remove"/>
+                </Button>
+                <Button Command="{Binding RemoveAllCommand}">
+                    <TextBlock Text="Clear"/>
                 </Button>
             </StackPanel>
         </Grid>

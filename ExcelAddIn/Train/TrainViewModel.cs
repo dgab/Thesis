@@ -146,6 +146,32 @@ namespace ExcelAddIn.Train
             }
         }
 
+        private ICommand removeCommand;
+
+        public ICommand RemoveCommand
+        {
+            get
+            {
+                if (removeCommand == null)
+                {
+                    this.removeCommand = new CommandHandler(() => Remove(), true);
+                }
+                return this.removeCommand;
+            }
+        }
+
+        private ICommand removeAllCommand;
+        public ICommand RemoveAllCommand
+        {
+            get
+            {
+                if (this.removeAllCommand == null)
+                {
+                    this.removeAllCommand = new CommandHandler(() => RemoveAll(), true);
+                }
+                return this.removeAllCommand;
+            }
+        }
         private void GetTrainingSamplesFromExelSheet()
         {
             IExcelRepresenter representer = new ExcelRepresenter();
@@ -190,6 +216,15 @@ namespace ExcelAddIn.Train
             }
         }
 
+        public void Remove()
+        {
+            this.TrainingSamples.Remove(this.SelectedItem);
+        }
+
+        public void RemoveAll()
+        {
+            this.TrainingSamples.Clear();
+        }
         public void BeginTrain()
         {
             uiContext = SynchronizationContext.Current;

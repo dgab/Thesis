@@ -84,6 +84,7 @@ namespace ExcelAddIn
             }
         }
 
+
         /// <summary>
         /// Gány, ha van ídőd javítsd, pl: Visitor Pattern, bele is férne  szakdogába...
         /// </summary>
