@@ -1,4 +1,5 @@
 ﻿using ExcelAddIn.Init;
+using ExcelAddIn.Test;
 using ExcelAddIn.Train;
 using System.Collections.Generic;
 using System.Windows.Controls;
@@ -11,6 +12,8 @@ namespace ExcelAddIn
         private static UserControl init = new InitView();
 
         private static UserControl train = new TrainView();
+
+        private static UserControl test = new TestView();
 
         private IList<UserControl> userControls;
 
@@ -100,6 +103,10 @@ namespace ExcelAddIn
                 {
                     return "Training";
                 }
+                else if (CurrentControl is TestView)
+                {
+                    return "Testing";
+                }
                 else
                 {
                     return "TODO";
@@ -108,7 +115,7 @@ namespace ExcelAddIn
         }
         public TaskPaneViewModel()
         {
-            userControls = new List<UserControl> { init, train };
+            userControls = new List<UserControl> { init, train, test };
             this.CurrentControl = init;
             Network.OnNetworkChanged += Network_OnNetworkChanged;
         }

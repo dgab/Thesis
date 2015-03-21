@@ -36,5 +36,16 @@ namespace NeuralNet.Layers
             return error;
         }
 
+        public double CalculateError(List<double> targets)
+        {
+            double error = 0;
+
+            for (int i = 0; i < this.Neurons.Count; i++)
+            {
+                error += Math.Pow(targets[i] - this.Neurons[i].Output, 2);
+            }
+
+            return error;
+        }
     }
 }

@@ -213,6 +213,12 @@
       <DependentUpon>TaskPane.cs</DependentUpon>
     </Compile>
     <Compile Include="TaskPane\TaskPaneViewModel.cs" />
+    <Compile Include="Test\InvalidNumberOfColumnsException.cs" />
+    <Compile Include="Test\TestResult.cs" />
+    <Compile Include="Test\TestView.xaml.cs">
+      <DependentUpon>TestView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Test\TestViewModel.cs" />
     <Compile Include="Train\AutoScrollingNetwork.cs" />
     <Compile Include="Train\ListBoxExtenders.cs" />
     <Compile Include="Train\TrainView.xaml.cs">
@@ -273,6 +279,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Log\NetworkProperitesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Test\TestView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

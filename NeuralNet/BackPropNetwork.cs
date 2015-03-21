@@ -152,15 +152,6 @@ namespace NeuralNet
         {
             this.stopTraining = true;
         }
-        public void Run(List<double> inputs)
-        {
-            this.Layers.InputLayer.AddInputs(inputs);
-
-            foreach (Layer l in this.Layers)
-            {
-                l.CalculateOutputs();
-            }
-        }
 
         public void Run()
         {
@@ -168,6 +159,21 @@ namespace NeuralNet
             {
                 l.CalculateOutputs();
             }
+        }
+
+
+        public void Run(List<double> inputs)
+        {
+            this.Layers.InputLayer.AddInputs(inputs);
+
+            this.Run();
+        }
+
+
+        public double Run(TrainingSample ts)
+        {
+            this.Run(ts.Inputs);
+            return this.Layers.OutputLayer.CalculateError(ts.Targets);
         }
     }
 }
