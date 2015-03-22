@@ -170,6 +170,8 @@
     <Compile Include="CommandHandler.cs" />
     <Compile Include="Excel\ExcelRepresenter.cs" />
     <Compile Include="Excel\IExcelRepresenter.cs" />
+    <Compile Include="Excel\ITrainingSetConverter.cs" />
+    <Compile Include="Excel\TrainingSetConverter.cs" />
     <Compile Include="Exceptions\RangeWasNullException.cs" />
     <Compile Include="Import\ImportView.xaml.cs">
       <DependentUpon>ImportView.xaml</DependentUpon>

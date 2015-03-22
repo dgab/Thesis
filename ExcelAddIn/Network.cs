@@ -8,12 +8,28 @@ namespace ExcelAddIn
     {
         public static event NetworkChanged OnNetworkChanged;
 
+        public static int InputNeurons
+        {
+            get
+            {
+                return Network.Default.Layers.InputLayer.Neurons.Count - 1;//Bias
+            }
+        }
+
+        public static int OutputNeurons
+        {
+            get
+            {
+                return Network.Default.Layers.OutputLayer.Neurons.Count;
+            }
+        }
+
         public static void OnNetworkChangedHandler(object sender, EventArgs e)
         {
             if (OnNetworkChanged != null)
-	        {
-		        OnNetworkChanged(sender, e);
-	        }
+            {
+                OnNetworkChanged(sender, e);
+            }
         }
 
         private static BackpropNetwork _default;

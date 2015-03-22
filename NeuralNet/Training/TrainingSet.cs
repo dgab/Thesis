@@ -105,6 +105,13 @@ namespace NeuralNet.Training
             this.inputSize = inputLayer.Neurons.OfType<Neuron>().Count();
             this.targetSize = outputLayer.Neurons.OfType<Neuron>().Count();
         }
+
+        public TrainingSet(int inputSize, int outputSize)
+        {
+            this.inputSize = inputSize;
+            this.targetSize = outputSize;
+        }
+
         private int inputSize { get; set; }
 
         private int targetSize { get; set; }
