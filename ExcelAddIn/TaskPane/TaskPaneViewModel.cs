@@ -87,30 +87,11 @@ namespace ExcelAddIn
             }
         }
 
-
-        /// <summary>
-        /// Gány, ha van ídőd javítsd, pl: Visitor Pattern, bele is férne  szakdogába...
-        /// </summary>
         public string GroupBoxName
         {
             get
             {
-                if (CurrentControl is InitView)
-                {
-                    return "Initialize";
-                }
-                else if (CurrentControl is TrainView)
-                {
-                    return "Training";
-                }
-                else if (CurrentControl is TestView)
-                {
-                    return "Testing";
-                }
-                else
-                {
-                    return "TODO";
-                }
+                return CurrentControl.ToString();
             }
         }
         public TaskPaneViewModel()

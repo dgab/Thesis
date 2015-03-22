@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ExcelAddIn.Init
 {
@@ -32,7 +21,7 @@ namespace ExcelAddIn.Init
             AddHandler(Validation.ErrorEvent, new RoutedEventHandler(OnErrorEvent));
         }
 
-        public void OnErrorEvent(object sender, RoutedEventArgs  e)
+        public void OnErrorEvent(object sender, RoutedEventArgs e)
         {
             var validationEventArgs = e as ValidationErrorEventArgs;
             if (validationEventArgs == null)
@@ -54,6 +43,11 @@ namespace ExcelAddIn.Init
             }
 
             btnInit.IsEnabled = errorCount == 0;
+        }
+
+        public override string ToString()
+        {
+            return "Initialize";
         }
     }
 }

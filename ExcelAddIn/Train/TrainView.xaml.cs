@@ -12,5 +12,11 @@ namespace ExcelAddIn.Train
             InitializeComponent();
             this.DataContext = new TrainViewModel();// { Listview = this.listview }; //ez elég tré, de ez van
         }
+
+        public override string ToString()
+        {
+            return "Training";
+        }
+
     }
 }

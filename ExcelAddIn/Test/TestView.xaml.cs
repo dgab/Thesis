@@ -12,5 +12,10 @@ namespace ExcelAddIn.Test
             InitializeComponent();
             this.DataContext = new TestViewModel();
         }
+
+        public override string ToString()
+        {
+            return "Testing";
+        }
     }
 }
