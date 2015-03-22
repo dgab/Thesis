@@ -10,8 +10,6 @@ namespace ExcelAddIn.Import
     /// </summary>
     public partial class ImportView : Window
     {
-
-
         public ImportView(DataTable table)
         {
             InitializeComponent();

@@ -2,7 +2,6 @@
 using ExcelAddIn.Exceptions;
 using NeuralNet.Training;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Windows.Input;
@@ -13,8 +12,6 @@ namespace ExcelAddIn.Test
     class TestViewModel
     {
         public BindingList<TestResult> Errors { get; private set; }
-
-        private List<TrainingSample> TrainingSamples;
 
         private TrainingSet trainingSet;
 
@@ -38,7 +35,6 @@ namespace ExcelAddIn.Test
         {
             this.excel = new ExcelRepresenter();
             this.Errors = new BindingList<TestResult>();
-            this.TrainingSamples = new List<TrainingSample>();
             this.converter = new TrainingSetConverter();
         }
 
@@ -47,7 +43,6 @@ namespace ExcelAddIn.Test
             DataTable dt = excel.ConvertSelectedRangeToDataTable();
 
             this.Errors.Clear();
-            this.TrainingSamples.Clear();
 
             try
             {
@@ -55,7 +50,7 @@ namespace ExcelAddIn.Test
 
                 foreach (TrainingSample ts in this.trainingSet)
                 {
-                    this.Errors.Add(new TestResult(this.TrainingSamples.IndexOf(ts) + 1, Network.Default.Run(ts)));
+                    this.Errors.Add(new TestResult(this.trainingSet.IndexOf(ts) + 1, Network.Default.Run(ts)));
                 }
             }
             catch (InvalidNumberOfColumnsException)

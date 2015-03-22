@@ -16,13 +16,7 @@ namespace ExcelAddIn.Excel
 
         public TrainingSet ConvertToTrainingSet(DataTable table, int inputNeurons, int outputNeurons)
         {
-            this.dataTable = table;
-            this.inputNeurons = inputNeurons;
-            this.outputNeurons = outputNeurons;
-
-            this.ValidateDataTable();
-            this.RenameColumnHeaders();
-            this.CheckForNonNumericFields();
+            this.FormatAndValidateDataTable(table, inputNeurons, outputNeurons);
             return this.ConcreteConvert();
         }
 
@@ -86,6 +80,18 @@ namespace ExcelAddIn.Excel
                 trainingSet.Add(ts);
             }
             return trainingSet;
+        }
+
+
+        public void FormatAndValidateDataTable(DataTable table, int inputNeurons, int outputNeurons)
+        {
+            this.dataTable = table;
+            this.inputNeurons = inputNeurons;
+            this.outputNeurons = outputNeurons;
+
+            this.ValidateDataTable();
+            this.RenameColumnHeaders();
+            this.CheckForNonNumericFields();
         }
     }
 }
