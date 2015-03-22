@@ -1,4 +1,5 @@
 ﻿using ExcelAddIn.Excel;
+using ExcelAddIn.Exceptions;
 using NeuralNet.Training;
 using System;
 using System.Collections.Generic;

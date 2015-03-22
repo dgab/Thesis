@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ExcelAddIn.Test
+namespace ExcelAddIn.Exceptions
 {
     class InvalidNumberOfColumnsException : Exception
     {

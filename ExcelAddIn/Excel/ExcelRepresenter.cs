@@ -1,4 +1,5 @@
-﻿using Microsoft.Office.Interop.Excel;
+﻿using ExcelAddIn.Exceptions;
+using Microsoft.Office.Interop.Excel;
 using Data = System.Data;
 
 namespace ExcelAddIn.Excel

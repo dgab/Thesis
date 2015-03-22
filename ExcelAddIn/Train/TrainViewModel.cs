@@ -1,4 +1,5 @@
 ﻿using ExcelAddIn.Excel;
+using ExcelAddIn.Exceptions;
 using ExcelAddIn.Import;
 using NeuralNet.Training;
 using System;
@@ -48,8 +49,6 @@ namespace ExcelAddIn.Train
             get { return iteration; }
             set { iteration = value; }
         }
-
-
 
         public BindingList<double> Errors { get; set; }
 

@@ -170,7 +170,7 @@
     <Compile Include="CommandHandler.cs" />
     <Compile Include="Excel\ExcelRepresenter.cs" />
     <Compile Include="Excel\IExcelRepresenter.cs" />
-    <Compile Include="Excel\RangeWasNullException.cs" />
+    <Compile Include="Exceptions\RangeWasNullException.cs" />
     <Compile Include="Import\ImportView.xaml.cs">
       <DependentUpon>ImportView.xaml</DependentUpon>
     </Compile>
@@ -213,7 +213,7 @@
       <DependentUpon>TaskPane.cs</DependentUpon>
     </Compile>
     <Compile Include="TaskPane\TaskPaneViewModel.cs" />
-    <Compile Include="Test\InvalidNumberOfColumnsException.cs" />
+    <Compile Include="Exceptions\InvalidNumberOfColumnsException.cs" />
     <Compile Include="Test\TestResult.cs" />
     <Compile Include="Test\TestView.xaml.cs">
       <DependentUpon>TestView.xaml</DependentUpon>

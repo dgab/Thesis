@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ExcelAddIn.Excel
+namespace ExcelAddIn.Exceptions
 {
     class RangeWasNullException : Exception
     {
