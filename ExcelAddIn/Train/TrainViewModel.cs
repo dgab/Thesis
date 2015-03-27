@@ -272,13 +272,12 @@ namespace ExcelAddIn.Train
             {
                 uiContext.Send(x => Errors.RemoveAt(99), null);
             }
-            if (e.CurrentIteration % 1000 == 0 || e.CurrentIteration == 1 || e.CurrentIteration == this.Iteration)
+            if (e.CurrentIteration % 1000 == 0 || e.CurrentIteration == 1 || e.CurrentIteration == this.Iteration || e.Error <= this.Error)
             {
                 uiContext.Send(x => Errors.Insert(0, e.Error), null);
             }
 
-            //uiContext.Send(x => Listview);
-            //Errors.Add(e.Error);
+            //uiContext.Send(x => Errors.Insert(0, e.Error), null);
         }
     }
 }
