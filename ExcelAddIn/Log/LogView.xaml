@@ -4,7 +4,8 @@
         xmlns:local="clr-namespace:ExcelAddIn.Log"
         x:Name="view"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:xw="clr-namespace:Xceed.Wpf.Toolkit.PropertyGrid;assembly=Xceed.Wpf.Toolkit">
+        xmlns:xw="clr-namespace:Xceed.Wpf.Toolkit.PropertyGrid;assembly=Xceed.Wpf.Toolkit"
+        Loaded="view_Loaded">
 
     <UserControl.Resources>
         <CompositeCollection x:Key="Col">

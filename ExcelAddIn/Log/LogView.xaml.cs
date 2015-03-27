@@ -1,7 +1,8 @@
 ﻿using ExcelAddIn.Log;
+using NeuralNet.Extensions;
+using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Input;
 
 namespace ExcelAddIn
 {
@@ -24,6 +25,13 @@ namespace ExcelAddIn
 
             neuron.X += e.HorizontalChange;
             neuron.Y += e.VerticalChange;
+        }
+
+        private void view_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var viewModel = this.DataContext.As<LogViewModel>();
+            viewModel.AreaHeight = viewModel.Neurons.Max(_ => _.Y) + 50;
+            viewModel.AreaWidth = viewModel.Neurons.Max(_ => _.X) + 50;
         }
     }
 }
