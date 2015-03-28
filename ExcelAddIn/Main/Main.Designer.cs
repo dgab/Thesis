@@ -38,6 +38,7 @@
             this.grpTaskPane = this.Factory.CreateRibbonGroup();
             this.tbtnShowHide = this.Factory.CreateRibbonToggleButton();
             this.btnShowNet = this.Factory.CreateRibbonButton();
+            this.btnAbout = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.grpTaskPane.SuspendLayout();
             // 
@@ -52,6 +53,7 @@
             // 
             this.grpTaskPane.Items.Add(this.tbtnShowHide);
             this.grpTaskPane.Items.Add(this.btnShowNet);
+            this.grpTaskPane.Items.Add(this.btnAbout);
             this.grpTaskPane.Label = "Neural Net";
             this.grpTaskPane.Name = "grpTaskPane";
             // 
@@ -67,6 +69,12 @@
             this.btnShowNet.Label = "Show Net";
             this.btnShowNet.Name = "btnShowNet";
             this.btnShowNet.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnShowNet_Click);
+            // 
+            // btnAbout
+            // 
+            this.btnAbout.Label = "About";
+            this.btnAbout.Name = "btnAbout";
+            this.btnAbout.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnAbout_Click);
             // 
             // Main
             // 
@@ -87,6 +95,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup grpTaskPane;
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton tbtnShowHide;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnShowNet;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnAbout;
     }
 
     partial class ThisRibbonCollection

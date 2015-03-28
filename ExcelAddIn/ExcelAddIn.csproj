@@ -194,6 +194,12 @@
     <Compile Include="Log\LogView.xaml.cs">
       <DependentUpon>LogView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Main\About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main\Main.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -231,6 +237,9 @@
       <DependentUpon>TrainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel.cs" />
+    <EmbeddedResource Include="Main\About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -242,6 +251,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="TaskPane\TaskPane.resx">
       <DependentUpon>TaskPane.cs</DependentUpon>
@@ -303,7 +313,15 @@
       <Name>NeuralNet</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Brain.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NeuralNetwork.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NeuralNetwork1.PNG" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

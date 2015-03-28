@@ -50,5 +50,11 @@ namespace ExcelAddIn
             NetworkProperitesView view = new NetworkProperitesView();
             view.ShowDialog();
         }
+
+        private void btnAbout_Click(object sender, RibbonControlEventArgs e)
+        {
+            About a = new About();
+            a.ShowDialog();
+        }
     }
 }
