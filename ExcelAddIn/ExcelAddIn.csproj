@@ -314,12 +314,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Brain.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\NeuralNetwork.PNG" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\NeuralNetwork1.PNG" />
   </ItemGroup>
   <PropertyGroup>
