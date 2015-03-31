@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace NeuralNet.Neurons
 {
-    public class BaseNeuron
+    public abstract class BaseNeuron
     {
         public BaseNeuron(Layer currentLayer)
         {

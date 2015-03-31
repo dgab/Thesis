@@ -121,7 +121,7 @@
   <data name="logoPictureBox.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAIMAAAEDCAYAAAAWWrcKAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAAcaURPVAAAAAIAAAAAAAAAgAAAACgAAACAAAAAgAAAzAg/
+        YQUAAAAJcEhZcwAADsEAAA7BAbiRa+0AAAAcaURPVAAAAAIAAAAAAAAAgAAAACgAAACAAAAAgAAAzAg/
         ptxQAACC0UlEQVR4Xu29BXhcV7K1PWNJtoUtZmZmZmZmZgaLLKNsmZmZGWN27DhODHHi0ATsMDMzg3H9
         a5+W+ubmu3OTzGQymft3PU/ltFoN5+x696pVHUn+C5ShjOFQwqAMRShhUIYilDAoQxFKGJShCCUMylCE
         EgZlKEIJgzIU8X8ahtu3gQ8+/AxXrryMEyfux4rlBzA4uAHtbYtQUjIFefkTkZoyDolJ45Ca2ou8giko
@@ -684,7 +684,7 @@
 </value>
   </data>
   <data name="textBoxDescription.Text" xml:space="preserve">
-    <value>This project was created as a thesis for the Corvinus University of Budapest. The project is an excel add-in in which the user can create neural networks, that can use the backpropagation algorithm to solve different types of problems. Problems that can be easy for a human, but hard for a computer.
+    <value>This project was created as a thesis for the Corvinus University of Budapest. With this add-in the user can create neural networks, that can use the backpropagation algorithm to solve classification problems or forecasting time series.
 </value>
   </data>
 </root>

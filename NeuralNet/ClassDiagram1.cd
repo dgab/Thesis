@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="NeuralNet.BackpropNetwork" Collapsed="true">
+    <Position X="1" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIgEAAAABEgAQABIAAAAAAAAAAACAgEAAAAAAAAAAI=</HashCode>
+      <FileName>BackpropNetwork.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeuralNet.Extensions.ObjectExtensions" Collapsed="true">
+    <Position X="11.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Extensions\ObjectExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeuralNet.Extensions.RandomExtensions" Collapsed="true">
+    <Position X="13.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Extensions\RandomExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeuralNet.Functions.FunctionFactory" Collapsed="true">
+    <Position X="1" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Functions\FunctionFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeuralNet.Functions.HiperbolicTangentFunction" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Functions\HiperbolicTangentFunction.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NeuralNet.Functions.IdentityFunction" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Functions\IdentityFunction.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NeuralNet.Functions.SigmoidFunction" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="1" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Functions\SigmoidFunction.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NeuralNet.Functions.StepFunction" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Functions\StepFunction.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NeuralNet.Layers.HiddenLayer" Collapsed="true">
+    <Position X="4.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Layers\HiddenLayer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeuralNet.Layers.InputLayer" Collapsed="true">
+    <Position X="1" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Layers\InputLayer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeuralNet.Layers.Layer" Collapsed="true">
+    <Position X="1" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEYAAAggBAAAAcEAIABAAABAAAAAABAAAAAAA=</HashCode>
+      <FileName>Layers\Layer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeuralNet.Layers.LayerCollection" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEIAAEAQAAAAABAQCgAABAQAAAAACAAECAMABABQIAA=</HashCode>
+      <FileName>Layers\LayerCollection.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NeuralNet.Layers.OutputLayer" Collapsed="true">
+    <Position X="2.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Layers\OutputLayer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeuralNet.Neurons.BaseNeuron" Collapsed="true">
+    <Position X="1" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAABEAAAAAAAAAAIQAACFAAgAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Neurons\BaseNeuron.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeuralNet.Neurons.BiasNeuron" Collapsed="true">
+    <Position X="1" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Neurons\BiasNeuron.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeuralNet.Neurons.Neuron" Collapsed="true">
+    <Position X="2.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Neurons\Neuron.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeuralNet.Others.NetworkVariables" Collapsed="true">
+    <Position X="9.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Others\NetworkVariables.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeuralNet.Others.RandomInitializer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAEAAQAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Others\RandomInitializer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NeuralNet.Others.Synapse" Collapsed="true">
+    <Position X="4.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQAAAAAAAAAAIIAAAAAAAAAACCAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Others\Synapse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeuralNet.Serialization.Serialization" Collapsed="true">
+    <Position X="16.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Serialization\Serialization.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeuralNet.Training.StopTrainingEventArgs" Collapsed="true">
+    <Position X="13.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Training\StopTrainingEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeuralNet.Training.TrainingEpochEventArgs" Collapsed="true">
+    <Position X="16.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Training\TrainingEpochEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeuralNet.Training.TrainingSample" Collapsed="true">
+    <Position X="13.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACECAAAAAAAEAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Training\TrainingSample.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NeuralNet.Training.TrainingSet" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEIAAEAAAACAABAQCAAABAQBgAAAAAAECAAAAABSIAA=</HashCode>
+      <FileName>Training\TrainingSet.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="NeuralNet.Functions.IFunction" Collapsed="true">
+    <Position X="2.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Functions\IFunction.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="NeuralNet.Others.IWeightInitializer" Collapsed="true">
+    <Position X="11.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Others\IWeightInitializer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="NeuralNet.Functions.TransferFunctions" Collapsed="true">
+    <Position X="4.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGAEAAAAAAA=</HashCode>
+      <FileName>Functions\FunctionFactory.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Delegate Name="NeuralNet.TrainingEpochDelegate" Collapsed="true">
+    <Position X="13" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>BackpropNetwork.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
