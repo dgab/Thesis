@@ -2,15 +2,18 @@
 
 namespace NeuralNet.Extensions
 {
+    /// <summary>
+    /// Extension methods for the object.
+    /// </summary>
     public static class ObjectExtensions
     {
         /// <summary>
-        /// Converts an object into a specified type, with different syntax.
+        /// Another syntax for casting.
         /// </summary>
-        /// <typeparam name="T">The type we want to get.</typeparam>
-        /// <param name="o">The object we want to cast.</param>
-        /// <returns>The casted object</returns>
-        /// <exception cref="InvalidCastException"></exception>
+        /// <typeparam name="T">The type to cast to.</typeparam>
+        /// <param name="o">The object which will be casted.</param>
+        /// <returns>The casted object.</returns>
+        /// <exception cref="InvalidCastException">Occurs on invalid cast.</exception>
         public static T As<T>(this object o)
         {
             return (T)o;

@@ -2,13 +2,17 @@
 
 namespace NeuralNet.Functions
 {
-
+    /// <summary>
+    /// Represents the sigmoid function.
+    /// </summary>
     public class SigmoidFunction : IFunction
     {
 
         /// <summary>
-        /// Sigmoid function: f(x) = 1.0 / (1.0 + Exp(-x))
+        /// Calculates the output of the sigmoid function in the x point.
         /// </summary>
+        /// <param name="x">The x point.</param>
+        /// <returns>The return value of the function.</returns>
         public double ApplyFunction(double x)
         {
             //return 2 / (1 + Math.Exp(-2 * x)) - 1;
@@ -16,10 +20,10 @@ namespace NeuralNet.Functions
         }
 
         /// <summary>
-        /// Derivative of the sigmoid function: f'(x) = f(x) * (1 - f(x))
+        /// Calculates the derivative of the sigmoid function in the x point.
         /// </summary>
-        /// <param name="x">The x</param>
-        /// <returns>The value of the derivative in the point x.</returns>
+        /// <param name="x">The x point.</param>
+        /// <returns>The derivative.</returns>
         public double Derivative(double x)
         {
             double s = ApplyFunction(x);

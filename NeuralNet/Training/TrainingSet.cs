@@ -7,6 +7,9 @@ using System.Linq;
 
 namespace NeuralNet.Training
 {
+    /// <summary>
+    /// A tanítási mintákat tartalmazó gyűjtemény.
+    /// </summary>
     public class TrainingSet : IList<TrainingSample>
     {
 

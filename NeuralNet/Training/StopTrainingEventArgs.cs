@@ -2,6 +2,9 @@
 
 namespace NeuralNet.Training
 {
+    /// <summary>
+    /// Nem használt.
+    /// </summary>
     public class StopTrainingEventArgs : EventArgs
     {
         public bool CancellationPending { get; set; }
